@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarShopDLL
 {
-    class Auto : Veicolo
+    public class Auto : Veicolo
     {
         public bool IsCabrio { get; set; }
 
