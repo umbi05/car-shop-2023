@@ -15,9 +15,9 @@ namespace CarShopDLL
         public string Allestimento { get; set; }
         public bool HasFendinebbia { get; set; }
 
-        public Auto(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, int nMarce,
+        public Auto(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, DimensioniStruct dimensioni, int nMarce,
             bool isCabrio, bool isPanoramica, bool isSuperBollo, int diametroCerchi, int nPorte, string trazione, string allestimento, bool hasFendinebbia)
-            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, nMarce)
+            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, dimensioni, nMarce)
         {
             
             IsCabrio = isCabrio;
@@ -33,12 +33,12 @@ namespace CarShopDLL
         public override string ToString()
         {
             //return base.ToString();
-            string st = "Auto: " + Marca + " - " + Modello;
+            string st = "Auto: " + base.ToString();
             if (IsCabrio)
             {
                 st += " (cabrio) ";
             }
-            st += NPosti + " posti " + " - Colore: " + Colore;
+            st += " - " + NPosti + " posti - Colore: " + Colore;
             return st;
         }
     }

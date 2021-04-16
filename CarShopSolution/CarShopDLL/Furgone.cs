@@ -10,9 +10,9 @@ namespace CarShopDLL
         public int CapacitaCarico { get; set; }
         public string TipoCarrozzeria { get; set; }
 
-        public Furgone(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, int nMarce,
+        public Furgone(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, DimensioniStruct dimensioni, int nMarce,
             int peso, int capacitaCarico, string tipoCarrozzeria) 
-            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, nMarce)
+            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, dimensioni, nMarce)
         {
             Peso = peso;
             CapacitaCarico = capacitaCarico;
@@ -22,7 +22,7 @@ namespace CarShopDLL
         public override string ToString()
         {
             //return base.ToString();
-            string st = "Furgone: " + Marca + " - " + Modello + " (" + CapacitaCarico + " litri)";
+            string st = "Furgone: " + base.ToString() + " (" + CapacitaCarico + " litri)";
             return st;
         }
     }

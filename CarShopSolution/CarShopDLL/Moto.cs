@@ -16,9 +16,9 @@ namespace CarShopDLL
         public bool HasCupolino { get; set; }
         public bool HasBauletto { get; set; }
 
-        public Moto(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, int nMarce,
+        public Moto(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, DimensioniStruct dimensioni, int nMarce,
             string tipoCarrozzeria, int tempi, string versione, Avviamento avviamento, bool isDepotenziata, string sella, bool hasCupolino, bool hasBauletto)
-            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, nMarce)
+            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, dimensioni, nMarce)
         {
             TipoCarrozzeria = tipoCarrozzeria;
             Tempi = tempi;
@@ -32,7 +32,7 @@ namespace CarShopDLL
 
         public override string ToString()
         {
-            string st = "Moto: " + Marca + " - " + Modello + " - " + Tempi + " tempi";
+            string st = "Moto: " + base.ToString() + " - " + Tempi + " tempi";
             return st;
         }
     }
