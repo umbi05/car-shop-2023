@@ -26,5 +26,24 @@ namespace CarShopDLL
             public int Altezza { get; set; }
         }
         public int NMarce { get; set; }
+
+        protected Veicolo(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, int nMarce)
+        {
+            Marca = marca;
+            Modello = modello;
+            Cilindrata = cilindrata;
+            ClasseInquinamento = classeInquinamento;
+            IsAutomatico = isAutomatico;
+            AnnoImmatricolazione = annoImmatricolazione;
+            Prezzo = prezzo;
+            Alimentazione = alimentazione;
+            Optional = optional;
+            Potenza = potenza;
+            NPosti = nPosti;
+            Colore = colore;
+            Targa = targa;
+            Km = km;
+            NMarce = nMarce;
+        }
     }
 }

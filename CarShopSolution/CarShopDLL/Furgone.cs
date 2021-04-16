@@ -10,16 +10,13 @@ namespace CarShopDLL
         public int CapacitaCarico { get; set; }
         public string TipoCarrozzeria { get; set; }
 
-        public Furgone(string marca, string modello, int cilindrata, int nPosti, string colore, string targa, int peso, int capacitaCarico)
+        public Furgone(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, int nMarce,
+            int peso, int capacitaCarico, string tipoCarrozzeria) 
+            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, nMarce)
         {
-            Marca = marca;
-            Modello = modello;
-            Cilindrata = cilindrata;
-            NPosti = nPosti;
-            Colore = colore;
-            Targa = targa;
             Peso = peso;
             CapacitaCarico = capacitaCarico;
+            TipoCarrozzeria = tipoCarrozzeria;
         }
 
         public override string ToString()

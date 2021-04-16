@@ -15,15 +15,19 @@ namespace CarShopDLL
         public string Allestimento { get; set; }
         public bool HasFendinebbia { get; set; }
 
-        public Auto(string marca, string modello, int cilindrata, int nPosti, string colore, string targa, bool isCabrio)
+        public Auto(string marca, string modello, int cilindrata, string classeInquinamento, bool isAutomatico, DateTime annoImmatricolazione, double prezzo, string alimentazione, List<string> optional, double potenza, int nPosti, string colore, string targa, int km, int nMarce,
+            bool isCabrio, bool isPanoramica, bool isSuperBollo, int diametroCerchi, int nPorte, string trazione, string allestimento, bool hasFendinebbia)
+            : base(marca, modello, cilindrata, classeInquinamento, isAutomatico, annoImmatricolazione, prezzo, alimentazione, optional, potenza, nPosti, colore, targa, km, nMarce)
         {
-            Marca = marca;
-            Modello = modello;
+            
             IsCabrio = isCabrio;
-            Cilindrata = cilindrata;
-            NPosti = nPosti;
-            Colore = colore;
-            Targa = targa;
+            IsPanoramica = isPanoramica;
+            IsSuperBollo = isSuperBollo;
+            DiametroCerchi = diametroCerchi;
+            NPorte = nPorte;
+            Trazione = trazione;
+            Allestimento = allestimento;
+            HasFendinebbia = hasFendinebbia;
         }
 
         public override string ToString()
