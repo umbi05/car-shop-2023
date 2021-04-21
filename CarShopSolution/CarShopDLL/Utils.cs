@@ -11,5 +11,10 @@ namespace CarShopDLL
         {
             return JsonConvert.SerializeObject(veicoli);
         }
+        public static List<Veicolo> DeserializeFromJson(string json)
+        {
+            List<Veicolo> veicoli = JsonConvert.DeserializeObject<List<Veicolo>>(json);
+            return veicoli;
+        }
     }
 }

@@ -1,17 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CarShopDLL;
 
 namespace CarShopConsole
 {
     class Program
     {
+        static string PATHDATA = Directory.GetCurrentDirectory() + "\\veicoli.json";
         static List<Veicolo> veicoli = new List<Veicolo>();
         static Veicolo v;
 
         static void Main(string[] args)
         {
-            v = new Auto("Audi", "A3", 2000, "EURO 6", true, new DateTime(2019,10,01), 27.600, "Diesel", new List<string>(), 90, 5, "Nero", "GX321AB", 47300, new Veicolo.DimensioniStruct(445, 270 ,168), 8, false, false, false, 19, 5, "Integrale", "Business", true);
+            Console.WriteLine("*** RIVENDITA VEICOLI ***");
+            Console.WriteLine("1. Create test data");
+            Console.WriteLine("2. Serialize to disk (veicoli.json)");
+            Console.WriteLine("3. Load (deserialize) from disk");
+            Console.WriteLine("4. Show data");
+            Console.WriteLine("Q. QUIT");
+            char choice;
+            do
+            {
+                choice = Console.ReadKey().KeyChar;
+                switch (choice)
+                {
+                    case '1':
+                        testData();
+                        break;
+                    case '2':
+                        serializeData();
+                        break;
+                    case '3':
+                        deserializeData();
+                        break;
+                    case '4':
+                        showData();
+                        break;
+                    default:
+                        break;
+                }
+            } while (choice != 'Q');
+        }
+
+        static void testData()
+        {
+            v = new Auto("Audi", "A3", 2000, "EURO 6", true, new DateTime(2019, 10, 01), 27.600, "Diesel", new List<string>(), 90, 5, "Nero", "GX321AB", 47300, new Veicolo.DimensioniStruct(445, 270, 168), 8, false, false, false, 19, 5, "Integrale", "Business", true);
             veicoli.Add(v);
             v = new Auto("Alfa Romeo", "Giulia", 2143, "EURO 6", true, new DateTime(2018 / 05 / 29), 40.500, "Diesel", new List<string>(), 179, 5, "Blu", "EA781PQ", 50200, new Veicolo.DimensioniStruct(455, 290, 158), 6, true, true, false, 20, 5, "Integrale", "Standard", true);
             veicoli.Add(v);
@@ -25,16 +59,27 @@ namespace CarShopConsole
 
             v = new Furgone("Fiat", "Ducato", 800, "EURO 5", false, new DateTime(2016, 06, 18), 12000, "Benzina", new List<string>(), 80, 3, "Bianco", "DA223WE", 40000, new Veicolo.DimensioniStruct(220, 252, 190), 5, 3000, 1115, "Furgonato");
             veicoli.Add(v);
+        }
 
+        static void showData()
+        {
             foreach (Veicolo veicolo in veicoli)
             {
                 Console.WriteLine(veicolo);
             }
+        }
 
+        static void serializeData()
+        {
             string serializedData = Utils.SerializeToJson(veicoli);
-            Console.WriteLine("\n\nSERIALIZZAZIONE JSON:\n" + serializedData);
+            // Console.WriteLine("\n\nSERIALIZZAZIONE JSON:\n" + serializedData);
+            File.WriteAllText(PATHDATA, serializedData);
+        }
 
-            Console.ReadKey();
+        static void deserializeData()
+        {
+            string dataFromFile = File.ReadAllText(PATHDATA);
+            veicoli = Utils.DeserializeFromJson(dataFromFile);
         }
     }
 }
