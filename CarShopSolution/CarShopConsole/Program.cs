@@ -7,7 +7,7 @@ namespace CarShopConsole
 {
     class Program
     {
-        static string PATHDATA = Directory.GetCurrentDirectory() + "\\veicoli.json";
+        static string JSONFILEPATH = Directory.GetCurrentDirectory() + "\\veicoli.json";
         static List<Veicolo> veicoli = new List<Veicolo>();
         static Veicolo v;
 
@@ -22,25 +22,31 @@ namespace CarShopConsole
             char choice;
             do
             {
-                choice = Console.ReadKey().KeyChar;
+                choice = Console.ReadKey(true).KeyChar;
                 switch (choice)
                 {
                     case '1':
                         testData();
+                        Console.WriteLine("\nTest data: SUCCESS\n");
                         break;
                     case '2':
                         serializeData();
+                        Console.WriteLine("\nSerialized to file: " + JSONFILEPATH + "\n");
                         break;
                     case '3':
                         deserializeData();
+                        Console.WriteLine("\nDeserialized from file: " + JSONFILEPATH + "\n");
                         break;
                     case '4':
+                        Console.WriteLine("\nACTUAL DATA:\n");
                         showData();
+                        Console.WriteLine();
                         break;
                     default:
+                        Console.WriteLine("\nWARNING: bad choice\n");
                         break;
                 }
-            } while (choice != 'Q');
+            } while (char.ToUpper(choice) != 'Q');
         }
 
         static void testData()
@@ -71,15 +77,13 @@ namespace CarShopConsole
 
         static void serializeData()
         {
-            string serializedData = Utils.SerializeToJson(veicoli);
+            string serializedData = Utils.SerializeToJson(veicoli, JSONFILEPATH);
             // Console.WriteLine("\n\nSERIALIZZAZIONE JSON:\n" + serializedData);
-            File.WriteAllText(PATHDATA, serializedData);
         }
 
         static void deserializeData()
         {
-            string dataFromFile = File.ReadAllText(PATHDATA);
-            veicoli = Utils.DeserializeFromJson(dataFromFile);
+            veicoli = Utils.DeserializeFromJson(JSONFILEPATH);
         }
     }
 }
