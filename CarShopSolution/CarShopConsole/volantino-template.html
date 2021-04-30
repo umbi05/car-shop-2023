@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h2>Veicoli in Vendita</h2>
+    <div id="list" *ngFor="let veicolo of veicoli">
+        <h3>
+            {{ veicolo.marca }} - {{ veicolo.modello }}
+        </h3>
+    </div>
+</body>
+</html>

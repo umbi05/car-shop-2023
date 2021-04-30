@@ -8,6 +8,9 @@ namespace CarShopConsole
     class Program
     {
         static string JSONFILEPATH = Directory.GetCurrentDirectory() + "\\veicoli.json";
+        static string HTMLTEMPLATEPATH = Directory.GetCurrentDirectory() + "\\volantino-template.html";
+        static string HTMLOUTPUTPATH = Directory.GetCurrentDirectory() + "\\volantino.html";
+
         static List<Veicolo> veicoli = new List<Veicolo>();
         static Veicolo v;
 
@@ -18,6 +21,7 @@ namespace CarShopConsole
             Console.WriteLine("2. Serialize to disk (veicoli.json)");
             Console.WriteLine("3. Load (deserialize) from disk");
             Console.WriteLine("4. Show data");
+            Console.WriteLine("5. Export HTML");
             Console.WriteLine("Q. QUIT");
             char choice;
             do
@@ -40,6 +44,11 @@ namespace CarShopConsole
                     case '4':
                         Console.WriteLine("\nACTUAL DATA:\n");
                         showData();
+                        Console.WriteLine();
+                        break;
+                    case '5':
+                        Console.WriteLine("\nExported to file: " + HTMLOUTPUTPATH + "\n");
+                        exportHtml();
                         Console.WriteLine();
                         break;
                     default:
@@ -84,6 +93,11 @@ namespace CarShopConsole
         static void deserializeData()
         {
             veicoli = Utils.DeserializeFromJson(JSONFILEPATH);
+        }
+
+        static void exportHtml()
+        {
+            Utils.createHtml(veicoli, HTMLTEMPLATEPATH, HTMLOUTPUTPATH);
         }
     }
 }
