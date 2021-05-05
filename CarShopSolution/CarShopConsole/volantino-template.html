@@ -7,9 +7,9 @@
 </head>
 <body>
     <h2>Veicoli in Vendita</h2>
-    <div id="list" *ngFor="let veicolo of veicoli">
+    <div id="list">
         <h3>
-            {{ veicolo.marca }} - {{ veicolo.modello }}
+            <span id="marca"></span> - <span id="modello"></span>
         </h3>
     </div>
 </body>

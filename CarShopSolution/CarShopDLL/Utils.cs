@@ -44,7 +44,13 @@ namespace CarShopDLL
             foreach (var veicolo in veicoli)
             {
                 IElement newNode = (IElement)list.Clone(true);
-                newNode.RemoveAttribute("id"); newNode.RemoveAttribute("*ngFor");
+
+                IElement nodeMarca = document.GetElementById("marca");
+                nodeMarca.TextContent = veicolo.Marca;
+                IElement nodeModello = document.GetElementById("modello");
+                nodeModello.TextContent = veicolo.Modello;
+
+                newNode.RemoveAttribute("id");
                 list.Before(newNode);
             }
             list.Remove();
