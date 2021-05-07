@@ -3,6 +3,8 @@ using System.IO;
 using Newtonsoft.Json;
 using AngleSharp;
 using AngleSharp.Dom;
+using System.Reflection;
+using System;
 
 namespace CarShopDLL
 {
@@ -39,17 +41,21 @@ namespace CarShopDLL
             //Create a virtual request to specify the document to load (here from our fixed string)
             var document = await context.OpenAsync(req => req.Content(templateHtml));
 
-            // TODO: modificare il document
             var list = document.GetElementById("list");
             foreach (var veicolo in veicoli)
             {
                 IElement newNode = (IElement)list.Clone(true);
-
-                IElement nodeMarca = document.GetElementById("marca");
-                nodeMarca.TextContent = veicolo.Marca;
-                IElement nodeModello = document.GetElementById("modello");
-                nodeModello.TextContent = veicolo.Modello;
-
+                PropertyInfo[] properties = veicolo.GetType().GetProperties();
+                foreach (PropertyInfo property in properties)
+                {
+                    //Console.WriteLine(property.Name);
+                    IElement propertyNode = newNode.QuerySelector('#' + property.Name.ToLower());
+                    if (propertyNode != null)
+                    {
+                        propertyNode.TextContent = property.GetValue(veicolo).ToString();
+                        propertyNode.RemoveAttribute("id");
+                    }
+                }
                 newNode.RemoveAttribute("id");
                 list.Before(newNode);
             }
