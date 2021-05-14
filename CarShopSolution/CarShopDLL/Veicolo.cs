@@ -57,7 +57,7 @@ namespace CarShopDLL
 
         public override string ToString()
         {
-            return Marca + " - " + Modello + " - " + AnnoImmatricolazione;
+            return Marca + " - " + Modello + " - " + AnnoImmatricolazione + " - " + Targa;
         }
     }
 }

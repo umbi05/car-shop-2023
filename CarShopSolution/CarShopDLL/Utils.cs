@@ -57,6 +57,8 @@ namespace CarShopDLL
                     }
                 }
                 newNode.RemoveAttribute("id");
+                IElement imageEl = newNode.QuerySelector("#immagine");
+                imageEl.SetAttribute("src", "images/" + veicolo.Targa + ".jpg");
                 list.Before(newNode);
             }
             list.Remove();

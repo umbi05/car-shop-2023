@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using CarShopDLL;
 
@@ -60,7 +61,7 @@ namespace CarShopConsole
 
         static void testData()
         {
-            v = new Auto("Audi", "A3", 2000, "EURO 6", true, new DateTime(2019, 10, 01), 27.600, "Diesel", new List<string>(), 90, 5, "Nero", "GX321AB", 47300, new Veicolo.DimensioniStruct(445, 270, 168), 8, false, false, false, 19, 5, "Integrale", "Business", true);
+            v = new Auto("Audi", "A3", 2000, "EURO 6", true, new DateTime(2019, 10, 01), 27.600, "Diesel", new List<string>(), 90, 5, "Nero", "CZ830AA", 47300, new Veicolo.DimensioniStruct(445, 270, 168), 8, false, false, false, 19, 5, "Integrale", "Business", true);
             veicoli.Add(v);
             v = new Auto("Alfa Romeo", "Giulia", 2143, "EURO 6", true, new DateTime(2018 / 05 / 29), 40.500, "Diesel", new List<string>(), 179, 5, "Blu", "EA781PQ", 50200, new Veicolo.DimensioniStruct(455, 290, 158), 6, true, true, false, 20, 5, "Integrale", "Standard", true);
             veicoli.Add(v);
@@ -98,6 +99,7 @@ namespace CarShopConsole
         static void exportHtml()
         {
             Utils.createHtml(veicoli, HTMLTEMPLATEPATH, HTMLOUTPUTPATH);
+            Process.Start(HTMLOUTPUTPATH);
         }
     }
 }
