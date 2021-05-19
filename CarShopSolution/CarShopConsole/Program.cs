@@ -11,6 +11,7 @@ namespace CarShopConsole
         static string JSONFILEPATH = Directory.GetCurrentDirectory() + "\\veicoli.json";
         static string HTMLTEMPLATEPATH = Directory.GetCurrentDirectory() + "\\volantino-template.html";
         static string HTMLOUTPUTPATH = Directory.GetCurrentDirectory() + "\\volantino.html";
+        static string DOCXOUTPUTPATH = Directory.GetCurrentDirectory() + "\\volantino.docx";
 
         static List<Veicolo> veicoli = new List<Veicolo>();
         static Veicolo v;
@@ -23,6 +24,7 @@ namespace CarShopConsole
             Console.WriteLine("3. Load (deserialize) from disk");
             Console.WriteLine("4. Show data");
             Console.WriteLine("5. Export HTML");
+            Console.WriteLine("6. Export DOCX");
             Console.WriteLine("Q. QUIT");
             char choice;
             do
@@ -48,9 +50,12 @@ namespace CarShopConsole
                         Console.WriteLine();
                         break;
                     case '5':
-                        Console.WriteLine("\nExported to file: " + HTMLOUTPUTPATH + "\n");
                         exportHtml();
-                        Console.WriteLine();
+                        Console.WriteLine("\nExported to file: " + HTMLOUTPUTPATH + "\n");
+                        break;
+                    case '6':
+                        ExportDocx();
+                        Console.WriteLine($"Exported to file: {DOCXOUTPUTPATH}\n");
                         break;
                     default:
                         Console.WriteLine("\nWARNING: bad choice\n");
@@ -100,6 +105,11 @@ namespace CarShopConsole
         {
             Utils.createHtml(veicoli, HTMLTEMPLATEPATH, HTMLOUTPUTPATH);
             Process.Start(HTMLOUTPUTPATH);
+        }
+
+        static void ExportDocx()
+        {
+            Utils.CreateDocx(veicoli, DOCXOUTPUTPATH);
         }
     }
 }

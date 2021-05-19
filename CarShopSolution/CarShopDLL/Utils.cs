@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
+using System.Reflection;
+
 using Newtonsoft.Json;
+
 using AngleSharp;
 using AngleSharp.Dom;
-using System.Reflection;
-using System;
+
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace CarShopDLL
 {
@@ -64,6 +70,39 @@ namespace CarShopDLL
             list.Remove();
 
             File.WriteAllText(outputPath, document.DocumentElement.OuterHtml);
+            Process.Start(outputPath);
+        }
+
+        public static void CreateDocx(List<Veicolo> veicoli, string outputPath)
+        {
+            // Create a document by supplying the filepath. 
+            using (WordprocessingDocument wordDocument =
+            WordprocessingDocument.Create(outputPath, WordprocessingDocumentType.Document))
+            {
+                // Add a main document part. 
+                MainDocumentPart mainPart = wordDocument.AddMainDocumentPart();
+
+                // Create the document structure and add some text.
+                mainPart.Document = new DocumentFormat.OpenXml.Wordprocessing.Document();
+                Body body = mainPart.Document.AppendChild(new Body());
+                foreach (var veicolo in veicoli)
+                {
+                    Paragraph para = body.AppendChild(new Paragraph());
+                    PropertyInfo[] properties = veicolo.GetType().GetProperties();
+                    foreach (PropertyInfo property in properties)
+                    {
+                        Run run = para.AppendChild(new Run());
+                        RunProperties runProp = new RunProperties();
+                        if (property.Name.ToLower() == "marca")
+                        {
+                            runProp.Bold = new Bold();
+                        }
+                        run.Append(runProp);
+                        run.AppendChild(new Text(property.Name + ": " + property.GetValue(veicolo) + " - ") { Space = SpaceProcessingModeValues.Preserve });
+                    }
+                }
+                Process.Start(outputPath);
+            }
         }
     }
 }
