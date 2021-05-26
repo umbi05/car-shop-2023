@@ -12,6 +12,7 @@ namespace CarShopConsole
         static string HTMLTEMPLATEPATH = Directory.GetCurrentDirectory() + "\\volantino-template.html";
         static string HTMLOUTPUTPATH = Directory.GetCurrentDirectory() + "\\volantino.html";
         static string DOCXOUTPUTPATH = Directory.GetCurrentDirectory() + "\\volantino.docx";
+        static string XLSXOUTPUTPATH = Directory.GetCurrentDirectory() + "\\elenco-veicoli.xlsx";
 
         static List<Veicolo> veicoli = new List<Veicolo>();
         static Veicolo v;
@@ -25,6 +26,7 @@ namespace CarShopConsole
             Console.WriteLine("4. Show data");
             Console.WriteLine("5. Export HTML");
             Console.WriteLine("6. Export DOCX");
+            Console.WriteLine("7. Export XLSX");
             Console.WriteLine("Q. QUIT");
             char choice;
             do
@@ -56,6 +58,10 @@ namespace CarShopConsole
                     case '6':
                         ExportDocx();
                         Console.WriteLine($"Exported to file: {DOCXOUTPUTPATH}\n");
+                        break;
+                    case '7':
+                        ExportXlsx();
+                        Console.WriteLine($"Exported to file: {XLSXOUTPUTPATH}\n");
                         break;
                     default:
                         Console.WriteLine("\nWARNING: bad choice\n");
@@ -110,6 +116,11 @@ namespace CarShopConsole
         static void ExportDocx()
         {
             Utils.CreateDocx(veicoli, DOCXOUTPUTPATH);
+        }
+
+        static void ExportXlsx()
+        {
+            Utils.CreateXlsx(veicoli, XLSXOUTPUTPATH);
         }
     }
 }
