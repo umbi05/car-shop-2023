@@ -109,17 +109,18 @@ namespace CarShopDLL
             }
         }
 
-        public static void CreateXlsx(List<Veicolo> veicoli, string outputPath)
+        public static string CreateXlsx(List<Veicolo> veicoli, string outputPath)
         {
             var datetime = DateTime.Now.ToString().Replace("/", "_").Replace(":", "_");
             if (File.Exists(outputPath))
             {
-                outputPath = Path.Combine(outputPath, "_" + datetime + ".xlsx");
+                outputPath = Path.GetFileNameWithoutExtension(outputPath) + "_" + datetime + ".xlsx";
             }
             using (SpreadsheetDocument package = SpreadsheetDocument.Create(outputPath, SpreadsheetDocumentType.Workbook))
             {
                 CreatePartsForExcel(package, veicoli);
             }
+            return outputPath;
         }
 
         private static void CreatePartsForExcel(SpreadsheetDocument package, List<Veicolo> veicoli)
@@ -348,6 +349,41 @@ namespace CarShopDLL
             workRow.Append(CreateCell("Anno", 2U));
             workRow.Append(CreateCell("Prezzo", 2U));
             return workRow;
+        }
+
+        private static Excel.Row GenerateRowForChildPartDetail(Veicolo veicolo)
+        {
+            Excel.Row tRow = new Excel.Row();
+            tRow.Append(CreateCell(veicolo.GetType().Name.ToString()));
+            tRow.Append(CreateCell(veicolo.Marca));
+            tRow.Append(CreateCell(veicolo.Modello));
+            tRow.Append(CreateCell(veicolo.Targa));
+            tRow.Append(CreateCell(veicolo.AnnoImmatricolazione.Year.ToString()));
+            tRow.Append(CreateCell(veicolo.Prezzo.ToString()));
+            return tRow;
+        }
+
+        private static Excel.Cell CreateCell(string text, uint styleIndex = 1U)
+        {
+            Excel.Cell cell = new Excel.Cell();
+            cell.StyleIndex = styleIndex;
+            cell.DataType = ResolveCellDataTypeOnValue(text);
+            cell.CellValue = new Excel.CellValue(text);
+            return cell;
+        }
+
+        private static EnumValue<Excel.CellValues> ResolveCellDataTypeOnValue(string text)
+        {
+            int intVal;
+            double doubleVal;
+            if (int.TryParse(text, out intVal) || double.TryParse(text, out doubleVal))
+            {
+                return Excel.CellValues.Number;
+            }
+            else
+            {
+                return Excel.CellValues.String;
+            }
         }
     }
 }
