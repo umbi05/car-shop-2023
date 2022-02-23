@@ -22,6 +22,10 @@ namespace CarShopConsole
             Console.WriteLine(v.ToString());
             v = new Auto("Jeep", "Renegade", false);
             Console.WriteLine(v);
+            v = new Auto("Mercedes", "CLA", new DateTime(2019, 10, 14), "Oceano", EAlimentazione.Diesel, ETrazione.Integrale, false);
+            Console.WriteLine(v);
+            v = new Auto("Peugeot", "208", new DateTime(2021, 6, 20), "Bianca", EAlimentazione.Elettrica, ETrazione.NonDichiarata, true);
+            Console.WriteLine(v);
         }
     }
 }
