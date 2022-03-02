@@ -21,6 +21,8 @@ namespace CarShopDll
         public string Allestimento { get; set; }
         public bool HasFendinebbia { get; set; }
 
+        public Auto() { }
+
         public Auto(string marca, string modello, bool pIsCabrio) : base(marca, modello)
         {
             IsCabrio = pIsCabrio;

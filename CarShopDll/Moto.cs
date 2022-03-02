@@ -23,6 +23,8 @@ namespace CarShopDll
         public bool HasCts { get; set; }
         public bool HasBauletto { get; set; }
 
+        public Moto() { }
+
         public Moto(string marca, string modello, int cilindrata,
             float potenza, DateTime dataImmatricolazione, int km,
             float peso, EAlimentazione alimentazione, bool isAutomatico,

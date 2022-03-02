@@ -44,6 +44,8 @@ namespace CarShopDll
         public string Descrizione { get; set; }
         public double Prezzo { get; set; }
 
+        protected Veicolo() { }
+
         protected Veicolo(string marca, string modello)
         {
             Marca = marca;
