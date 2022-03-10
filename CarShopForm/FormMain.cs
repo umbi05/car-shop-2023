@@ -31,7 +31,7 @@ namespace CarShopForm
             {
                 veicoli = Tools.DeserializeFromFile(PATHDATA);
                 dgvVeicoli.DataSource = getAuto(veicoli);
-                bindData();
+                //bindData();
             }
             else
             {
@@ -39,11 +39,11 @@ namespace CarShopForm
             }
         }
 
-        private void bindData()
-        {
-            txtMarca.DataBindings.Clear();
-            txtMarca.DataBindings.Add("Text", veicoloSelezionato, "Marca");
-        }
+        //private void bindData()
+        //{
+        //    txtMarca.DataBindings.Clear();
+        //    txtMarca.DataBindings.Add("Text", veicoloSelezionato, "Marca");
+        //}
 
         private List<Auto> getAuto(List<Veicolo> veicoli)
         {
@@ -69,7 +69,7 @@ namespace CarShopForm
         private void aUTOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dgvVeicoli.DataSource = getAuto(veicoli);
-            bindData();
+            //bindData();
             tsdShowSelected.Text = "AUTO";
             tstMarca.Text = "";
         }
@@ -77,7 +77,7 @@ namespace CarShopForm
         private void mOTOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dgvVeicoli.DataSource = getMoto(veicoli);
-            bindData();
+            //bindData();
             tsdShowSelected.Text = "MOTO";
             tstMarca.Text = "";
         }
@@ -93,7 +93,7 @@ namespace CarShopForm
                 List<Moto> moto = getMoto(veicoli);
                 dgvVeicoli.DataSource = moto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
             }
-            bindData();
+            //bindData();
         }
 
         private void dgvVeicoli_SelectionChanged(object sender, EventArgs e)
@@ -103,6 +103,13 @@ namespace CarShopForm
                 veicoloSelezionato = (Veicolo)dgvVeicoli.SelectedRows[0].DataBoundItem;
                 txtMarca.Text = veicoloSelezionato.Marca;
                 txtModello.Text = veicoloSelezionato.Modello;
+                txtColore.Text = veicoloSelezionato.Colore;
+                txtTarga.Text = veicoloSelezionato.Targa;
+                txtDescrizione.Text = veicoloSelezionato.Descrizione;
+                numPrezzo.Value = (decimal)veicoloSelezionato.Prezzo;
+                dateImmatricolazione.Value = veicoloSelezionato.DataImmatricolazione;
+                chkAutomatica.Checked = veicoloSelezionato.IsAutomatico;
+                cmbAlimentazione.SelectedValue = veicoloSelezionato.Alimentazione.ToString();
             }
         }
     }

@@ -30,28 +30,36 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslMarca = new System.Windows.Forms.ToolStripLabel();
-            this.tstMarca = new System.Windows.Forms.ToolStripTextBox();
-            this.dgvVeicoli = new System.Windows.Forms.DataGridView();
             this.tsdShowSelected = new System.Windows.Forms.ToolStripDropDownButton();
             this.aUTOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOTOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fURGONEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslMarca = new System.Windows.Forms.ToolStripLabel();
+            this.tstMarca = new System.Windows.Forms.ToolStripTextBox();
+            this.dgvVeicoli = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblMarca = new System.Windows.Forms.Label();
-            this.lblModello = new System.Windows.Forms.Label();
-            this.lblColore = new System.Windows.Forms.Label();
-            this.lblTarga = new System.Windows.Forms.Label();
-            this.lblDescrizione = new System.Windows.Forms.Label();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtColore = new System.Windows.Forms.TextBox();
-            this.txtModello = new System.Windows.Forms.TextBox();
-            this.txtTarga = new System.Windows.Forms.TextBox();
             this.txtDescrizione = new System.Windows.Forms.TextBox();
+            this.txtTarga = new System.Windows.Forms.TextBox();
+            this.txtModello = new System.Windows.Forms.TextBox();
+            this.txtColore = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.lblDescrizione = new System.Windows.Forms.Label();
+            this.lblTarga = new System.Windows.Forms.Label();
+            this.lblColore = new System.Windows.Forms.Label();
+            this.lblModello = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.lblPrezzo = new System.Windows.Forms.Label();
+            this.lblDataImmatricolazione = new System.Windows.Forms.Label();
+            this.lblAlimentazione = new System.Windows.Forms.Label();
+            this.numPrezzo = new System.Windows.Forms.NumericUpDown();
+            this.dateImmatricolazione = new System.Windows.Forms.DateTimePicker();
+            this.cmbAlimentazione = new System.Windows.Forms.ComboBox();
+            this.chkAutomatica = new System.Windows.Forms.CheckBox();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripMain
@@ -66,6 +74,38 @@
             this.toolStripMain.Size = new System.Drawing.Size(784, 25);
             this.toolStripMain.TabIndex = 0;
             this.toolStripMain.Text = "toolStrip1";
+            // 
+            // tsdShowSelected
+            // 
+            this.tsdShowSelected.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aUTOToolStripMenuItem,
+            this.mOTOToolStripMenuItem,
+            this.fURGONEToolStripMenuItem});
+            this.tsdShowSelected.Image = ((System.Drawing.Image)(resources.GetObject("tsdShowSelected.Image")));
+            this.tsdShowSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdShowSelected.Name = "tsdShowSelected";
+            this.tsdShowSelected.Size = new System.Drawing.Size(66, 22);
+            this.tsdShowSelected.Text = "AUTO";
+            // 
+            // aUTOToolStripMenuItem
+            // 
+            this.aUTOToolStripMenuItem.Name = "aUTOToolStripMenuItem";
+            this.aUTOToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.aUTOToolStripMenuItem.Text = "AUTO";
+            this.aUTOToolStripMenuItem.Click += new System.EventHandler(this.aUTOToolStripMenuItem_Click);
+            // 
+            // mOTOToolStripMenuItem
+            // 
+            this.mOTOToolStripMenuItem.Name = "mOTOToolStripMenuItem";
+            this.mOTOToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.mOTOToolStripMenuItem.Text = "MOTO";
+            this.mOTOToolStripMenuItem.Click += new System.EventHandler(this.mOTOToolStripMenuItem_Click);
+            // 
+            // fURGONEToolStripMenuItem
+            // 
+            this.fURGONEToolStripMenuItem.Name = "fURGONEToolStripMenuItem";
+            this.fURGONEToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.fURGONEToolStripMenuItem.Text = "FURGONE";
             // 
             // toolStripSeparator1
             // 
@@ -98,40 +138,15 @@
             this.dgvVeicoli.TabIndex = 1;
             this.dgvVeicoli.SelectionChanged += new System.EventHandler(this.dgvVeicoli_SelectionChanged);
             // 
-            // tsdShowSelected
-            // 
-            this.tsdShowSelected.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aUTOToolStripMenuItem,
-            this.mOTOToolStripMenuItem,
-            this.fURGONEToolStripMenuItem});
-            this.tsdShowSelected.Image = ((System.Drawing.Image)(resources.GetObject("tsdShowSelected.Image")));
-            this.tsdShowSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsdShowSelected.Name = "tsdShowSelected";
-            this.tsdShowSelected.Size = new System.Drawing.Size(66, 22);
-            this.tsdShowSelected.Text = "AUTO";
-            // 
-            // aUTOToolStripMenuItem
-            // 
-            this.aUTOToolStripMenuItem.Name = "aUTOToolStripMenuItem";
-            this.aUTOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aUTOToolStripMenuItem.Text = "AUTO";
-            this.aUTOToolStripMenuItem.Click += new System.EventHandler(this.aUTOToolStripMenuItem_Click);
-            // 
-            // mOTOToolStripMenuItem
-            // 
-            this.mOTOToolStripMenuItem.Name = "mOTOToolStripMenuItem";
-            this.mOTOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mOTOToolStripMenuItem.Text = "MOTO";
-            this.mOTOToolStripMenuItem.Click += new System.EventHandler(this.mOTOToolStripMenuItem_Click);
-            // 
-            // fURGONEToolStripMenuItem
-            // 
-            this.fURGONEToolStripMenuItem.Name = "fURGONEToolStripMenuItem";
-            this.fURGONEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.fURGONEToolStripMenuItem.Text = "FURGONE";
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkAutomatica);
+            this.groupBox1.Controls.Add(this.cmbAlimentazione);
+            this.groupBox1.Controls.Add(this.dateImmatricolazione);
+            this.groupBox1.Controls.Add(this.numPrezzo);
+            this.groupBox1.Controls.Add(this.lblPrezzo);
+            this.groupBox1.Controls.Add(this.lblDataImmatricolazione);
+            this.groupBox1.Controls.Add(this.lblAlimentazione);
             this.groupBox1.Controls.Add(this.txtDescrizione);
             this.groupBox1.Controls.Add(this.txtTarga);
             this.groupBox1.Controls.Add(this.txtModello);
@@ -150,41 +165,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Veicolo";
             // 
-            // lblMarca
+            // txtDescrizione
             // 
-            this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(3, 27);
-            this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(37, 13);
-            this.lblMarca.TabIndex = 0;
-            this.lblMarca.Text = "Marca";
+            this.txtDescrizione.Location = new System.Drawing.Point(74, 108);
+            this.txtDescrizione.Multiline = true;
+            this.txtDescrizione.Name = "txtDescrizione";
+            this.txtDescrizione.Size = new System.Drawing.Size(245, 82);
+            this.txtDescrizione.TabIndex = 9;
             // 
-            // lblModello
+            // txtTarga
             // 
-            this.lblModello.AutoSize = true;
-            this.lblModello.Location = new System.Drawing.Point(3, 64);
-            this.lblModello.Name = "lblModello";
-            this.lblModello.Size = new System.Drawing.Size(44, 13);
-            this.lblModello.TabIndex = 1;
-            this.lblModello.Text = "Modello";
+            this.txtTarga.Location = new System.Drawing.Point(219, 61);
+            this.txtTarga.Name = "txtTarga";
+            this.txtTarga.Size = new System.Drawing.Size(100, 20);
+            this.txtTarga.TabIndex = 8;
             // 
-            // lblColore
+            // txtModello
             // 
-            this.lblColore.AutoSize = true;
-            this.lblColore.Location = new System.Drawing.Point(176, 27);
-            this.lblColore.Name = "lblColore";
-            this.lblColore.Size = new System.Drawing.Size(37, 13);
-            this.lblColore.TabIndex = 2;
-            this.lblColore.Text = "Colore";
+            this.txtModello.Location = new System.Drawing.Point(56, 61);
+            this.txtModello.Name = "txtModello";
+            this.txtModello.Size = new System.Drawing.Size(100, 20);
+            this.txtModello.TabIndex = 7;
             // 
-            // lblTarga
+            // txtColore
             // 
-            this.lblTarga.AutoSize = true;
-            this.lblTarga.Location = new System.Drawing.Point(176, 64);
-            this.lblTarga.Name = "lblTarga";
-            this.lblTarga.Size = new System.Drawing.Size(35, 13);
-            this.lblTarga.TabIndex = 3;
-            this.lblTarga.Text = "Targa";
+            this.txtColore.Location = new System.Drawing.Point(219, 23);
+            this.txtColore.Name = "txtColore";
+            this.txtColore.Size = new System.Drawing.Size(100, 20);
+            this.txtColore.TabIndex = 6;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(56, 23);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(100, 20);
+            this.txtMarca.TabIndex = 5;
             // 
             // lblDescrizione
             // 
@@ -195,41 +210,118 @@
             this.lblDescrizione.TabIndex = 4;
             this.lblDescrizione.Text = "Descrizione";
             // 
-            // txtMarca
+            // lblTarga
             // 
-            this.txtMarca.Location = new System.Drawing.Point(56, 23);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(100, 20);
-            this.txtMarca.TabIndex = 5;
+            this.lblTarga.AutoSize = true;
+            this.lblTarga.Location = new System.Drawing.Point(176, 64);
+            this.lblTarga.Name = "lblTarga";
+            this.lblTarga.Size = new System.Drawing.Size(35, 13);
+            this.lblTarga.TabIndex = 3;
+            this.lblTarga.Text = "Targa";
             // 
-            // txtColore
+            // lblColore
             // 
-            this.txtColore.Location = new System.Drawing.Point(219, 23);
-            this.txtColore.Name = "txtColore";
-            this.txtColore.Size = new System.Drawing.Size(100, 20);
-            this.txtColore.TabIndex = 6;
+            this.lblColore.AutoSize = true;
+            this.lblColore.Location = new System.Drawing.Point(176, 27);
+            this.lblColore.Name = "lblColore";
+            this.lblColore.Size = new System.Drawing.Size(37, 13);
+            this.lblColore.TabIndex = 2;
+            this.lblColore.Text = "Colore";
             // 
-            // txtModello
+            // lblModello
             // 
-            this.txtModello.Location = new System.Drawing.Point(56, 61);
-            this.txtModello.Name = "txtModello";
-            this.txtModello.Size = new System.Drawing.Size(100, 20);
-            this.txtModello.TabIndex = 7;
+            this.lblModello.AutoSize = true;
+            this.lblModello.Location = new System.Drawing.Point(3, 64);
+            this.lblModello.Name = "lblModello";
+            this.lblModello.Size = new System.Drawing.Size(44, 13);
+            this.lblModello.TabIndex = 1;
+            this.lblModello.Text = "Modello";
             // 
-            // txtTarga
+            // lblMarca
             // 
-            this.txtTarga.Location = new System.Drawing.Point(219, 61);
-            this.txtTarga.Name = "txtTarga";
-            this.txtTarga.Size = new System.Drawing.Size(100, 20);
-            this.txtTarga.TabIndex = 8;
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Location = new System.Drawing.Point(3, 27);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(37, 13);
+            this.lblMarca.TabIndex = 0;
+            this.lblMarca.Text = "Marca";
             // 
-            // txtDescrizione
+            // lblPrezzo
             // 
-            this.txtDescrizione.Location = new System.Drawing.Point(74, 108);
-            this.txtDescrizione.Multiline = true;
-            this.txtDescrizione.Name = "txtDescrizione";
-            this.txtDescrizione.Size = new System.Drawing.Size(245, 82);
-            this.txtDescrizione.TabIndex = 9;
+            this.lblPrezzo.AutoSize = true;
+            this.lblPrezzo.Location = new System.Drawing.Point(341, 25);
+            this.lblPrezzo.Name = "lblPrezzo";
+            this.lblPrezzo.Size = new System.Drawing.Size(39, 13);
+            this.lblPrezzo.TabIndex = 3;
+            this.lblPrezzo.Text = "Prezzo";
+            // 
+            // lblDataImmatricolazione
+            // 
+            this.lblDataImmatricolazione.AutoSize = true;
+            this.lblDataImmatricolazione.Location = new System.Drawing.Point(341, 64);
+            this.lblDataImmatricolazione.Name = "lblDataImmatricolazione";
+            this.lblDataImmatricolazione.Size = new System.Drawing.Size(111, 13);
+            this.lblDataImmatricolazione.TabIndex = 4;
+            this.lblDataImmatricolazione.Text = "Data Immatricolazione";
+            // 
+            // lblAlimentazione
+            // 
+            this.lblAlimentazione.AutoSize = true;
+            this.lblAlimentazione.Location = new System.Drawing.Point(341, 128);
+            this.lblAlimentazione.Name = "lblAlimentazione";
+            this.lblAlimentazione.Size = new System.Drawing.Size(72, 13);
+            this.lblAlimentazione.TabIndex = 5;
+            this.lblAlimentazione.Text = "Alimentazione";
+            // 
+            // numPrezzo
+            // 
+            this.numPrezzo.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numPrezzo.Location = new System.Drawing.Point(386, 23);
+            this.numPrezzo.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
+            this.numPrezzo.Name = "numPrezzo";
+            this.numPrezzo.Size = new System.Drawing.Size(79, 20);
+            this.numPrezzo.TabIndex = 10;
+            // 
+            // dateImmatricolazione
+            // 
+            this.dateImmatricolazione.Location = new System.Drawing.Point(342, 80);
+            this.dateImmatricolazione.Name = "dateImmatricolazione";
+            this.dateImmatricolazione.Size = new System.Drawing.Size(200, 20);
+            this.dateImmatricolazione.TabIndex = 11;
+            // 
+            // cmbAlimentazione
+            // 
+            this.cmbAlimentazione.FormattingEnabled = true;
+            this.cmbAlimentazione.Items.AddRange(new object[] {
+            "Benzina",
+            "Diesel",
+            "Elettrica",
+            "Ibrida",
+            "GPL",
+            "Metano"});
+            this.cmbAlimentazione.Location = new System.Drawing.Point(417, 125);
+            this.cmbAlimentazione.Name = "cmbAlimentazione";
+            this.cmbAlimentazione.Size = new System.Drawing.Size(125, 21);
+            this.cmbAlimentazione.TabIndex = 12;
+            // 
+            // chkAutomatica
+            // 
+            this.chkAutomatica.AutoSize = true;
+            this.chkAutomatica.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkAutomatica.Location = new System.Drawing.Point(446, 173);
+            this.chkAutomatica.Name = "chkAutomatica";
+            this.chkAutomatica.Size = new System.Drawing.Size(96, 17);
+            this.chkAutomatica.TabIndex = 13;
+            this.chkAutomatica.Text = "AUTOMATICA";
+            this.chkAutomatica.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -247,6 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +367,13 @@
         private System.Windows.Forms.Label lblColore;
         private System.Windows.Forms.Label lblModello;
         private System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.CheckBox chkAutomatica;
+        private System.Windows.Forms.ComboBox cmbAlimentazione;
+        private System.Windows.Forms.DateTimePicker dateImmatricolazione;
+        private System.Windows.Forms.NumericUpDown numPrezzo;
+        private System.Windows.Forms.Label lblPrezzo;
+        private System.Windows.Forms.Label lblDataImmatricolazione;
+        private System.Windows.Forms.Label lblAlimentazione;
     }
 }
 
