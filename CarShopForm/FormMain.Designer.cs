@@ -38,7 +38,14 @@
             this.tslMarca = new System.Windows.Forms.ToolStripLabel();
             this.tstMarca = new System.Windows.Forms.ToolStripTextBox();
             this.dgvVeicoli = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxVeicolo = new System.Windows.Forms.GroupBox();
+            this.chkAutomatica = new System.Windows.Forms.CheckBox();
+            this.cmbAlimentazione = new System.Windows.Forms.ComboBox();
+            this.dateImmatricolazione = new System.Windows.Forms.DateTimePicker();
+            this.numPrezzo = new System.Windows.Forms.NumericUpDown();
+            this.lblPrezzo = new System.Windows.Forms.Label();
+            this.lblDataImmatricolazione = new System.Windows.Forms.Label();
+            this.lblAlimentazione = new System.Windows.Forms.Label();
             this.txtDescrizione = new System.Windows.Forms.TextBox();
             this.txtTarga = new System.Windows.Forms.TextBox();
             this.txtModello = new System.Windows.Forms.TextBox();
@@ -49,17 +56,15 @@
             this.lblColore = new System.Windows.Forms.Label();
             this.lblModello = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.lblPrezzo = new System.Windows.Forms.Label();
-            this.lblDataImmatricolazione = new System.Windows.Forms.Label();
-            this.lblAlimentazione = new System.Windows.Forms.Label();
-            this.numPrezzo = new System.Windows.Forms.NumericUpDown();
-            this.dateImmatricolazione = new System.Windows.Forms.DateTimePicker();
-            this.cmbAlimentazione = new System.Windows.Forms.ComboBox();
-            this.chkAutomatica = new System.Windows.Forms.CheckBox();
+            this.grpTipo = new System.Windows.Forms.GroupBox();
+            this.rdbAuto = new System.Windows.Forms.RadioButton();
+            this.rdbMoto = new System.Windows.Forms.RadioButton();
+            this.rdbFurgoni = new System.Windows.Forms.RadioButton();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxVeicolo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).BeginInit();
+            this.grpTipo.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripMain
@@ -140,30 +145,108 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkAutomatica);
-            this.groupBox1.Controls.Add(this.cmbAlimentazione);
-            this.groupBox1.Controls.Add(this.dateImmatricolazione);
-            this.groupBox1.Controls.Add(this.numPrezzo);
-            this.groupBox1.Controls.Add(this.lblPrezzo);
-            this.groupBox1.Controls.Add(this.lblDataImmatricolazione);
-            this.groupBox1.Controls.Add(this.lblAlimentazione);
-            this.groupBox1.Controls.Add(this.txtDescrizione);
-            this.groupBox1.Controls.Add(this.txtTarga);
-            this.groupBox1.Controls.Add(this.txtModello);
-            this.groupBox1.Controls.Add(this.txtColore);
-            this.groupBox1.Controls.Add(this.txtMarca);
-            this.groupBox1.Controls.Add(this.lblDescrizione);
-            this.groupBox1.Controls.Add(this.lblTarga);
-            this.groupBox1.Controls.Add(this.lblColore);
-            this.groupBox1.Controls.Add(this.lblModello);
-            this.groupBox1.Controls.Add(this.lblMarca);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 253);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(784, 281);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Veicolo";
+            this.groupBoxVeicolo.Controls.Add(this.grpTipo);
+            this.groupBoxVeicolo.Controls.Add(this.chkAutomatica);
+            this.groupBoxVeicolo.Controls.Add(this.cmbAlimentazione);
+            this.groupBoxVeicolo.Controls.Add(this.dateImmatricolazione);
+            this.groupBoxVeicolo.Controls.Add(this.numPrezzo);
+            this.groupBoxVeicolo.Controls.Add(this.lblPrezzo);
+            this.groupBoxVeicolo.Controls.Add(this.lblDataImmatricolazione);
+            this.groupBoxVeicolo.Controls.Add(this.lblAlimentazione);
+            this.groupBoxVeicolo.Controls.Add(this.txtDescrizione);
+            this.groupBoxVeicolo.Controls.Add(this.txtTarga);
+            this.groupBoxVeicolo.Controls.Add(this.txtModello);
+            this.groupBoxVeicolo.Controls.Add(this.txtColore);
+            this.groupBoxVeicolo.Controls.Add(this.txtMarca);
+            this.groupBoxVeicolo.Controls.Add(this.lblDescrizione);
+            this.groupBoxVeicolo.Controls.Add(this.lblTarga);
+            this.groupBoxVeicolo.Controls.Add(this.lblColore);
+            this.groupBoxVeicolo.Controls.Add(this.lblModello);
+            this.groupBoxVeicolo.Controls.Add(this.lblMarca);
+            this.groupBoxVeicolo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxVeicolo.Location = new System.Drawing.Point(0, 253);
+            this.groupBoxVeicolo.Name = "groupBox1";
+            this.groupBoxVeicolo.Size = new System.Drawing.Size(784, 281);
+            this.groupBoxVeicolo.TabIndex = 2;
+            this.groupBoxVeicolo.TabStop = false;
+            this.groupBoxVeicolo.Text = "Veicolo";
+            // 
+            // chkAutomatica
+            // 
+            this.chkAutomatica.AutoSize = true;
+            this.chkAutomatica.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkAutomatica.Location = new System.Drawing.Point(446, 173);
+            this.chkAutomatica.Name = "chkAutomatica";
+            this.chkAutomatica.Size = new System.Drawing.Size(96, 17);
+            this.chkAutomatica.TabIndex = 13;
+            this.chkAutomatica.Text = "AUTOMATICA";
+            this.chkAutomatica.UseVisualStyleBackColor = true;
+            // 
+            // cmbAlimentazione
+            // 
+            this.cmbAlimentazione.FormattingEnabled = true;
+            this.cmbAlimentazione.Items.AddRange(new object[] {
+            "Benzina",
+            "Diesel",
+            "Elettrica",
+            "Ibrida",
+            "GPL",
+            "Metano"});
+            this.cmbAlimentazione.Location = new System.Drawing.Point(417, 125);
+            this.cmbAlimentazione.Name = "cmbAlimentazione";
+            this.cmbAlimentazione.Size = new System.Drawing.Size(125, 21);
+            this.cmbAlimentazione.TabIndex = 12;
+            // 
+            // dateImmatricolazione
+            // 
+            this.dateImmatricolazione.Location = new System.Drawing.Point(342, 80);
+            this.dateImmatricolazione.Name = "dateImmatricolazione";
+            this.dateImmatricolazione.Size = new System.Drawing.Size(200, 20);
+            this.dateImmatricolazione.TabIndex = 11;
+            // 
+            // numPrezzo
+            // 
+            this.numPrezzo.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numPrezzo.Location = new System.Drawing.Point(386, 23);
+            this.numPrezzo.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
+            this.numPrezzo.Name = "numPrezzo";
+            this.numPrezzo.Size = new System.Drawing.Size(79, 20);
+            this.numPrezzo.TabIndex = 10;
+            // 
+            // lblPrezzo
+            // 
+            this.lblPrezzo.AutoSize = true;
+            this.lblPrezzo.Location = new System.Drawing.Point(341, 25);
+            this.lblPrezzo.Name = "lblPrezzo";
+            this.lblPrezzo.Size = new System.Drawing.Size(39, 13);
+            this.lblPrezzo.TabIndex = 3;
+            this.lblPrezzo.Text = "Prezzo";
+            // 
+            // lblDataImmatricolazione
+            // 
+            this.lblDataImmatricolazione.AutoSize = true;
+            this.lblDataImmatricolazione.Location = new System.Drawing.Point(341, 64);
+            this.lblDataImmatricolazione.Name = "lblDataImmatricolazione";
+            this.lblDataImmatricolazione.Size = new System.Drawing.Size(111, 13);
+            this.lblDataImmatricolazione.TabIndex = 4;
+            this.lblDataImmatricolazione.Text = "Data Immatricolazione";
+            // 
+            // lblAlimentazione
+            // 
+            this.lblAlimentazione.AutoSize = true;
+            this.lblAlimentazione.Location = new System.Drawing.Point(341, 128);
+            this.lblAlimentazione.Name = "lblAlimentazione";
+            this.lblAlimentazione.Size = new System.Drawing.Size(72, 13);
+            this.lblAlimentazione.TabIndex = 5;
+            this.lblAlimentazione.Text = "Alimentazione";
             // 
             // txtDescrizione
             // 
@@ -246,89 +329,60 @@
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "Marca";
             // 
-            // lblPrezzo
+            // grpTipo
             // 
-            this.lblPrezzo.AutoSize = true;
-            this.lblPrezzo.Location = new System.Drawing.Point(341, 25);
-            this.lblPrezzo.Name = "lblPrezzo";
-            this.lblPrezzo.Size = new System.Drawing.Size(39, 13);
-            this.lblPrezzo.TabIndex = 3;
-            this.lblPrezzo.Text = "Prezzo";
+            this.grpTipo.Controls.Add(this.rdbFurgoni);
+            this.grpTipo.Controls.Add(this.rdbMoto);
+            this.grpTipo.Controls.Add(this.rdbAuto);
+            this.grpTipo.Location = new System.Drawing.Point(344, 210);
+            this.grpTipo.Name = "grpTipo";
+            this.grpTipo.Size = new System.Drawing.Size(200, 42);
+            this.grpTipo.TabIndex = 3;
+            this.grpTipo.TabStop = false;
+            this.grpTipo.Text = "Tipo";
             // 
-            // lblDataImmatricolazione
+            // rdbAuto
             // 
-            this.lblDataImmatricolazione.AutoSize = true;
-            this.lblDataImmatricolazione.Location = new System.Drawing.Point(341, 64);
-            this.lblDataImmatricolazione.Name = "lblDataImmatricolazione";
-            this.lblDataImmatricolazione.Size = new System.Drawing.Size(111, 13);
-            this.lblDataImmatricolazione.TabIndex = 4;
-            this.lblDataImmatricolazione.Text = "Data Immatricolazione";
+            this.rdbAuto.AutoSize = true;
+            this.rdbAuto.Location = new System.Drawing.Point(4, 16);
+            this.rdbAuto.Name = "rdbAuto";
+            this.rdbAuto.Size = new System.Drawing.Size(55, 17);
+            this.rdbAuto.TabIndex = 0;
+            this.rdbAuto.TabStop = true;
+            this.rdbAuto.Text = "AUTO";
+            this.rdbAuto.UseVisualStyleBackColor = true;
+            this.rdbAuto.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
             // 
-            // lblAlimentazione
+            // rdbMoto
             // 
-            this.lblAlimentazione.AutoSize = true;
-            this.lblAlimentazione.Location = new System.Drawing.Point(341, 128);
-            this.lblAlimentazione.Name = "lblAlimentazione";
-            this.lblAlimentazione.Size = new System.Drawing.Size(72, 13);
-            this.lblAlimentazione.TabIndex = 5;
-            this.lblAlimentazione.Text = "Alimentazione";
+            this.rdbMoto.AutoSize = true;
+            this.rdbMoto.Location = new System.Drawing.Point(61, 16);
+            this.rdbMoto.Name = "rdbMoto";
+            this.rdbMoto.Size = new System.Drawing.Size(57, 17);
+            this.rdbMoto.TabIndex = 1;
+            this.rdbMoto.TabStop = true;
+            this.rdbMoto.Text = "MOTO";
+            this.rdbMoto.UseVisualStyleBackColor = true;
+            this.rdbMoto.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
             // 
-            // numPrezzo
+            // rdbFurgoni
             // 
-            this.numPrezzo.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numPrezzo.Location = new System.Drawing.Point(386, 23);
-            this.numPrezzo.Maximum = new decimal(new int[] {
-            200000,
-            0,
-            0,
-            0});
-            this.numPrezzo.Name = "numPrezzo";
-            this.numPrezzo.Size = new System.Drawing.Size(79, 20);
-            this.numPrezzo.TabIndex = 10;
-            // 
-            // dateImmatricolazione
-            // 
-            this.dateImmatricolazione.Location = new System.Drawing.Point(342, 80);
-            this.dateImmatricolazione.Name = "dateImmatricolazione";
-            this.dateImmatricolazione.Size = new System.Drawing.Size(200, 20);
-            this.dateImmatricolazione.TabIndex = 11;
-            // 
-            // cmbAlimentazione
-            // 
-            this.cmbAlimentazione.FormattingEnabled = true;
-            this.cmbAlimentazione.Items.AddRange(new object[] {
-            "Benzina",
-            "Diesel",
-            "Elettrica",
-            "Ibrida",
-            "GPL",
-            "Metano"});
-            this.cmbAlimentazione.Location = new System.Drawing.Point(417, 125);
-            this.cmbAlimentazione.Name = "cmbAlimentazione";
-            this.cmbAlimentazione.Size = new System.Drawing.Size(125, 21);
-            this.cmbAlimentazione.TabIndex = 12;
-            // 
-            // chkAutomatica
-            // 
-            this.chkAutomatica.AutoSize = true;
-            this.chkAutomatica.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkAutomatica.Location = new System.Drawing.Point(446, 173);
-            this.chkAutomatica.Name = "chkAutomatica";
-            this.chkAutomatica.Size = new System.Drawing.Size(96, 17);
-            this.chkAutomatica.TabIndex = 13;
-            this.chkAutomatica.Text = "AUTOMATICA";
-            this.chkAutomatica.UseVisualStyleBackColor = true;
+            this.rdbFurgoni.AutoSize = true;
+            this.rdbFurgoni.Location = new System.Drawing.Point(120, 16);
+            this.rdbFurgoni.Name = "rdbFurgoni";
+            this.rdbFurgoni.Size = new System.Drawing.Size(78, 17);
+            this.rdbFurgoni.TabIndex = 2;
+            this.rdbFurgoni.TabStop = true;
+            this.rdbFurgoni.Text = "FURGONE";
+            this.rdbFurgoni.UseVisualStyleBackColor = true;
+            this.rdbFurgoni.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 534);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxVeicolo);
             this.Controls.Add(this.dgvVeicoli);
             this.Controls.Add(this.toolStripMain);
             this.Name = "FormMain";
@@ -337,9 +391,11 @@
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxVeicolo.ResumeLayout(false);
+            this.groupBoxVeicolo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).EndInit();
+            this.grpTipo.ResumeLayout(false);
+            this.grpTipo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,7 +412,7 @@
         private System.Windows.Forms.ToolStripMenuItem aUTOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOTOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fURGONEToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxVeicolo;
         private System.Windows.Forms.TextBox txtDescrizione;
         private System.Windows.Forms.TextBox txtTarga;
         private System.Windows.Forms.TextBox txtModello;
@@ -374,6 +430,10 @@
         private System.Windows.Forms.Label lblPrezzo;
         private System.Windows.Forms.Label lblDataImmatricolazione;
         private System.Windows.Forms.Label lblAlimentazione;
+        private System.Windows.Forms.GroupBox grpTipo;
+        private System.Windows.Forms.RadioButton rdbFurgoni;
+        private System.Windows.Forms.RadioButton rdbMoto;
+        private System.Windows.Forms.RadioButton rdbAuto;
     }
 }
 

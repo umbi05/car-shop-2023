@@ -55,10 +55,28 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupBoxAuto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GroupBoxAuto.Designer.cs">
+      <DependentUpon>GroupBoxAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupBoxMoto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GroupBoxMoto.Designer.cs">
+      <DependentUpon>GroupBoxMoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupBoxAuto.resx">
+      <DependentUpon>GroupBoxAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupBoxMoto.resx">
+      <DependentUpon>GroupBoxMoto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

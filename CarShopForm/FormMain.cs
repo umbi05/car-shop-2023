@@ -20,6 +20,8 @@ namespace CarShopForm
         List<Veicolo> veicoli;
         public Veicolo veicoloSelezionato;
 
+        UserControl groupBoxTipoSelezionato = new UserControl();
+
         public FormMain()
         {
             InitializeComponent();
@@ -107,9 +109,40 @@ namespace CarShopForm
                 txtTarga.Text = veicoloSelezionato.Targa;
                 txtDescrizione.Text = veicoloSelezionato.Descrizione;
                 numPrezzo.Value = (decimal)veicoloSelezionato.Prezzo;
-                dateImmatricolazione.Value = veicoloSelezionato.DataImmatricolazione;
+                try
+                {
+                    dateImmatricolazione.Value = veicoloSelezionato.DataImmatricolazione;
+                }
+                catch (Exception)
+                {
+                    dateImmatricolazione.Value = DateTimePicker.MinimumDateTime;
+                }
                 chkAutomatica.Checked = veicoloSelezionato.IsAutomatico;
                 cmbAlimentazione.SelectedValue = veicoloSelezionato.Alimentazione.ToString();
+                rdbAuto.Checked = rdbMoto.Checked = false;
+                rdbAuto.Checked = veicoloSelezionato is Auto;
+                rdbMoto.Checked = veicoloSelezionato is Moto;
+            }
+        }
+
+        private void rdbTipo_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton myRadioButton = (RadioButton)sender;
+            if (myRadioButton.Checked)
+            {
+                groupBoxVeicolo.Controls.Remove(groupBoxTipoSelezionato);
+                if (myRadioButton.Text == "AUTO")
+                {
+                    groupBoxTipoSelezionato = new GroupBoxAuto(veicoloSelezionato);
+                    groupBoxVeicolo.Controls.Add(groupBoxTipoSelezionato);
+                }
+                else if (myRadioButton.Text == "MOTO")
+                {
+                    groupBoxTipoSelezionato = new GroupBoxMoto(veicoloSelezionato);
+                    groupBoxVeicolo.Controls.Add(groupBoxTipoSelezionato);
+                }
+                groupBoxTipoSelezionato.Top = 20;
+                groupBoxTipoSelezionato.Left = 600;
             }
         }
     }
