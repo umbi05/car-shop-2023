@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.grpAuto = new System.Windows.Forms.GroupBox();
-            this.chkCabrio = new System.Windows.Forms.CheckBox();
-            this.chkFendinebbia = new System.Windows.Forms.CheckBox();
+            this.cmbTrazione = new System.Windows.Forms.ComboBox();
+            this.txtAllestimento = new System.Windows.Forms.TextBox();
+            this.numCerchi = new System.Windows.Forms.NumericUpDown();
+            this.numPorte = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.numPorte = new System.Windows.Forms.NumericUpDown();
-            this.numCerchi = new System.Windows.Forms.NumericUpDown();
-            this.txtAllestimento = new System.Windows.Forms.TextBox();
-            this.cmbTrazione = new System.Windows.Forms.ComboBox();
+            this.chkFendinebbia = new System.Windows.Forms.CheckBox();
+            this.chkCabrio = new System.Windows.Forms.CheckBox();
             this.grpAuto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numPorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCerchi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPorte)).BeginInit();
             this.SuspendLayout();
             // 
             // grpAuto
@@ -64,25 +64,37 @@
             this.grpAuto.TabStop = false;
             this.grpAuto.Text = "Auto";
             // 
-            // chkCabrio
+            // cmbTrazione
             // 
-            this.chkCabrio.AutoSize = true;
-            this.chkCabrio.Location = new System.Drawing.Point(6, 19);
-            this.chkCabrio.Name = "chkCabrio";
-            this.chkCabrio.Size = new System.Drawing.Size(56, 17);
-            this.chkCabrio.TabIndex = 0;
-            this.chkCabrio.Text = "Cabrio";
-            this.chkCabrio.UseVisualStyleBackColor = true;
+            this.cmbTrazione.FormattingEnabled = true;
+            this.cmbTrazione.Location = new System.Drawing.Point(56, 214);
+            this.cmbTrazione.Name = "cmbTrazione";
+            this.cmbTrazione.Size = new System.Drawing.Size(106, 21);
+            this.cmbTrazione.TabIndex = 8;
             // 
-            // chkFendinebbia
+            // txtAllestimento
             // 
-            this.chkFendinebbia.AutoSize = true;
-            this.chkFendinebbia.Location = new System.Drawing.Point(6, 42);
-            this.chkFendinebbia.Name = "chkFendinebbia";
-            this.chkFendinebbia.Size = new System.Drawing.Size(84, 17);
-            this.chkFendinebbia.TabIndex = 1;
-            this.chkFendinebbia.Text = "Fendinebbia";
-            this.chkFendinebbia.UseVisualStyleBackColor = true;
+            this.txtAllestimento.Location = new System.Drawing.Point(6, 152);
+            this.txtAllestimento.Multiline = true;
+            this.txtAllestimento.Name = "txtAllestimento";
+            this.txtAllestimento.Size = new System.Drawing.Size(156, 34);
+            this.txtAllestimento.TabIndex = 7;
+            // 
+            // numCerchi
+            // 
+            this.numCerchi.Location = new System.Drawing.Point(94, 75);
+            this.numCerchi.Name = "numCerchi";
+            this.numCerchi.Size = new System.Drawing.Size(68, 20);
+            this.numCerchi.TabIndex = 6;
+            this.numCerchi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numPorte
+            // 
+            this.numPorte.Location = new System.Drawing.Point(94, 100);
+            this.numPorte.Name = "numPorte";
+            this.numPorte.Size = new System.Drawing.Size(68, 20);
+            this.numPorte.TabIndex = 5;
+            this.numPorte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -120,37 +132,25 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Trazione:";
             // 
-            // numPorte
+            // chkFendinebbia
             // 
-            this.numPorte.Location = new System.Drawing.Point(94, 100);
-            this.numPorte.Name = "numPorte";
-            this.numPorte.Size = new System.Drawing.Size(68, 20);
-            this.numPorte.TabIndex = 5;
-            this.numPorte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chkFendinebbia.AutoSize = true;
+            this.chkFendinebbia.Location = new System.Drawing.Point(6, 42);
+            this.chkFendinebbia.Name = "chkFendinebbia";
+            this.chkFendinebbia.Size = new System.Drawing.Size(84, 17);
+            this.chkFendinebbia.TabIndex = 1;
+            this.chkFendinebbia.Text = "Fendinebbia";
+            this.chkFendinebbia.UseVisualStyleBackColor = true;
             // 
-            // numCerchi
+            // chkCabrio
             // 
-            this.numCerchi.Location = new System.Drawing.Point(94, 75);
-            this.numCerchi.Name = "numCerchi";
-            this.numCerchi.Size = new System.Drawing.Size(68, 20);
-            this.numCerchi.TabIndex = 6;
-            this.numCerchi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtAllestimento
-            // 
-            this.txtAllestimento.Location = new System.Drawing.Point(6, 152);
-            this.txtAllestimento.Multiline = true;
-            this.txtAllestimento.Name = "txtAllestimento";
-            this.txtAllestimento.Size = new System.Drawing.Size(156, 34);
-            this.txtAllestimento.TabIndex = 7;
-            // 
-            // cmbTrazione
-            // 
-            this.cmbTrazione.FormattingEnabled = true;
-            this.cmbTrazione.Location = new System.Drawing.Point(56, 214);
-            this.cmbTrazione.Name = "cmbTrazione";
-            this.cmbTrazione.Size = new System.Drawing.Size(106, 21);
-            this.cmbTrazione.TabIndex = 8;
+            this.chkCabrio.AutoSize = true;
+            this.chkCabrio.Location = new System.Drawing.Point(6, 19);
+            this.chkCabrio.Name = "chkCabrio";
+            this.chkCabrio.Size = new System.Drawing.Size(56, 17);
+            this.chkCabrio.TabIndex = 0;
+            this.chkCabrio.Text = "Cabrio";
+            this.chkCabrio.UseVisualStyleBackColor = true;
             // 
             // GroupBoxAuto
             // 
@@ -161,8 +161,8 @@
             this.Size = new System.Drawing.Size(172, 248);
             this.grpAuto.ResumeLayout(false);
             this.grpAuto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numPorte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCerchi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPorte)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,15 +170,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpAuto;
-        private System.Windows.Forms.NumericUpDown numCerchi;
-        private System.Windows.Forms.NumericUpDown numPorte;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox chkFendinebbia;
-        private System.Windows.Forms.CheckBox chkCabrio;
-        private System.Windows.Forms.ComboBox cmbTrazione;
-        private System.Windows.Forms.TextBox txtAllestimento;
+        public System.Windows.Forms.NumericUpDown numCerchi;
+        public System.Windows.Forms.NumericUpDown numPorte;
+        public System.Windows.Forms.CheckBox chkFendinebbia;
+        public System.Windows.Forms.CheckBox chkCabrio;
+        public System.Windows.Forms.ComboBox cmbTrazione;
+        public System.Windows.Forms.TextBox txtAllestimento;
     }
 }

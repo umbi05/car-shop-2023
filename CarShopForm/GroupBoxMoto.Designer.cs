@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.grpMoto = new System.Windows.Forms.GroupBox();
-            this.cmbTipo = new System.Windows.Forms.ComboBox();
-            this.numCilindri = new System.Windows.Forms.NumericUpDown();
-            this.numTempi = new System.Windows.Forms.NumericUpDown();
-            this.chkAbs = new System.Windows.Forms.CheckBox();
-            this.chkCts = new System.Windows.Forms.CheckBox();
-            this.chkBauletto = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkBauletto = new System.Windows.Forms.CheckBox();
+            this.chkCts = new System.Windows.Forms.CheckBox();
+            this.chkAbs = new System.Windows.Forms.CheckBox();
+            this.numTempi = new System.Windows.Forms.NumericUpDown();
+            this.numCilindri = new System.Windows.Forms.NumericUpDown();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.grpMoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCilindri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTempi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCilindri)).BeginInit();
             this.SuspendLayout();
             // 
             // grpMoto
@@ -62,49 +62,32 @@
             this.grpMoto.TabStop = false;
             this.grpMoto.Text = "Moto";
             // 
-            // cmbTipo
+            // label3
             // 
-            this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Location = new System.Drawing.Point(45, 41);
-            this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.Size = new System.Drawing.Size(121, 21);
-            this.cmbTipo.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Tempi:";
             // 
-            // numCilindri
+            // label2
             // 
-            this.numCilindri.Location = new System.Drawing.Point(65, 83);
-            this.numCilindri.Name = "numCilindri";
-            this.numCilindri.Size = new System.Drawing.Size(75, 20);
-            this.numCilindri.TabIndex = 1;
-            this.numCilindri.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Cilindri:";
             // 
-            // numTempi
+            // label1
             // 
-            this.numTempi.Location = new System.Drawing.Point(65, 121);
-            this.numTempi.Name = "numTempi";
-            this.numTempi.Size = new System.Drawing.Size(75, 20);
-            this.numTempi.TabIndex = 2;
-            this.numTempi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // chkAbs
-            // 
-            this.chkAbs.AutoSize = true;
-            this.chkAbs.Location = new System.Drawing.Point(9, 161);
-            this.chkAbs.Name = "chkAbs";
-            this.chkAbs.Size = new System.Drawing.Size(47, 17);
-            this.chkAbs.TabIndex = 3;
-            this.chkAbs.Text = "ABS";
-            this.chkAbs.UseVisualStyleBackColor = true;
-            // 
-            // chkCts
-            // 
-            this.chkCts.AutoSize = true;
-            this.chkCts.Location = new System.Drawing.Point(9, 193);
-            this.chkCts.Name = "chkCts";
-            this.chkCts.Size = new System.Drawing.Size(47, 17);
-            this.chkCts.TabIndex = 4;
-            this.chkCts.Text = "CTS";
-            this.chkCts.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Tipo:";
             // 
             // chkBauletto
             // 
@@ -116,32 +99,49 @@
             this.chkBauletto.Text = "Bauletto";
             this.chkBauletto.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // chkCts
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Tipo:";
+            this.chkCts.AutoSize = true;
+            this.chkCts.Location = new System.Drawing.Point(9, 193);
+            this.chkCts.Name = "chkCts";
+            this.chkCts.Size = new System.Drawing.Size(47, 17);
+            this.chkCts.TabIndex = 4;
+            this.chkCts.Text = "CTS";
+            this.chkCts.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // chkAbs
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Cilindri:";
+            this.chkAbs.AutoSize = true;
+            this.chkAbs.Location = new System.Drawing.Point(9, 161);
+            this.chkAbs.Name = "chkAbs";
+            this.chkAbs.Size = new System.Drawing.Size(47, 17);
+            this.chkAbs.TabIndex = 3;
+            this.chkAbs.Text = "ABS";
+            this.chkAbs.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // numTempi
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Tempi:";
+            this.numTempi.Location = new System.Drawing.Point(65, 121);
+            this.numTempi.Name = "numTempi";
+            this.numTempi.Size = new System.Drawing.Size(75, 20);
+            this.numTempi.TabIndex = 2;
+            this.numTempi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numCilindri
+            // 
+            this.numCilindri.Location = new System.Drawing.Point(65, 83);
+            this.numCilindri.Name = "numCilindri";
+            this.numCilindri.Size = new System.Drawing.Size(75, 20);
+            this.numCilindri.TabIndex = 1;
+            this.numCilindri.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Location = new System.Drawing.Point(45, 41);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTipo.TabIndex = 0;
             // 
             // GroupBoxMoto
             // 
@@ -152,8 +152,8 @@
             this.Size = new System.Drawing.Size(172, 248);
             this.grpMoto.ResumeLayout(false);
             this.grpMoto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCilindri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTempi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCilindri)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -161,14 +161,14 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpMoto;
-        private System.Windows.Forms.CheckBox chkBauletto;
-        private System.Windows.Forms.CheckBox chkCts;
-        private System.Windows.Forms.CheckBox chkAbs;
-        private System.Windows.Forms.NumericUpDown numTempi;
-        private System.Windows.Forms.NumericUpDown numCilindri;
-        private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.CheckBox chkBauletto;
+        public System.Windows.Forms.CheckBox chkCts;
+        public System.Windows.Forms.CheckBox chkAbs;
+        public System.Windows.Forms.NumericUpDown numTempi;
+        public System.Windows.Forms.NumericUpDown numCilindri;
+        public System.Windows.Forms.ComboBox cmbTipo;
     }
 }

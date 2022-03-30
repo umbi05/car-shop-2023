@@ -10,7 +10,8 @@ namespace CarShopDll
         Elettrica,
         Ibrida,
         GPL,
-        Metano
+        Metano,
+        NonDichiarata
     }
 
     public abstract class Veicolo

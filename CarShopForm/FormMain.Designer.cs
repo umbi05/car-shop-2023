@@ -39,6 +39,10 @@
             this.tstMarca = new System.Windows.Forms.ToolStripTextBox();
             this.dgvVeicoli = new System.Windows.Forms.DataGridView();
             this.groupBoxVeicolo = new System.Windows.Forms.GroupBox();
+            this.grpTipo = new System.Windows.Forms.GroupBox();
+            this.rdbFurgoni = new System.Windows.Forms.RadioButton();
+            this.rdbMoto = new System.Windows.Forms.RadioButton();
+            this.rdbAuto = new System.Windows.Forms.RadioButton();
             this.chkAutomatica = new System.Windows.Forms.CheckBox();
             this.cmbAlimentazione = new System.Windows.Forms.ComboBox();
             this.dateImmatricolazione = new System.Windows.Forms.DateTimePicker();
@@ -56,15 +60,17 @@
             this.lblColore = new System.Windows.Forms.Label();
             this.lblModello = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.grpTipo = new System.Windows.Forms.GroupBox();
-            this.rdbAuto = new System.Windows.Forms.RadioButton();
-            this.rdbMoto = new System.Windows.Forms.RadioButton();
-            this.rdbFurgoni = new System.Windows.Forms.RadioButton();
+            this.toolStripSplitButtonAddItem = new System.Windows.Forms.ToolStripSplitButton();
+            this.nuovaAutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuovaMotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuovoFurgoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSalva = new System.Windows.Forms.Button();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).BeginInit();
             this.groupBoxVeicolo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).BeginInit();
             this.grpTipo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripMain
@@ -73,7 +79,9 @@
             this.tsdShowSelected,
             this.toolStripSeparator1,
             this.tslMarca,
-            this.tstMarca});
+            this.tstMarca,
+            this.toolStripSeparator2,
+            this.toolStripSplitButtonAddItem});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(784, 25);
@@ -95,21 +103,21 @@
             // aUTOToolStripMenuItem
             // 
             this.aUTOToolStripMenuItem.Name = "aUTOToolStripMenuItem";
-            this.aUTOToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.aUTOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aUTOToolStripMenuItem.Text = "AUTO";
             this.aUTOToolStripMenuItem.Click += new System.EventHandler(this.aUTOToolStripMenuItem_Click);
             // 
             // mOTOToolStripMenuItem
             // 
             this.mOTOToolStripMenuItem.Name = "mOTOToolStripMenuItem";
-            this.mOTOToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.mOTOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mOTOToolStripMenuItem.Text = "MOTO";
             this.mOTOToolStripMenuItem.Click += new System.EventHandler(this.mOTOToolStripMenuItem_Click);
             // 
             // fURGONEToolStripMenuItem
             // 
             this.fURGONEToolStripMenuItem.Name = "fURGONEToolStripMenuItem";
-            this.fURGONEToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.fURGONEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fURGONEToolStripMenuItem.Text = "FURGONE";
             // 
             // toolStripSeparator1
@@ -143,8 +151,9 @@
             this.dgvVeicoli.TabIndex = 1;
             this.dgvVeicoli.SelectionChanged += new System.EventHandler(this.dgvVeicoli_SelectionChanged);
             // 
-            // groupBox1
+            // groupBoxVeicolo
             // 
+            this.groupBoxVeicolo.Controls.Add(this.btnSalva);
             this.groupBoxVeicolo.Controls.Add(this.grpTipo);
             this.groupBoxVeicolo.Controls.Add(this.chkAutomatica);
             this.groupBoxVeicolo.Controls.Add(this.cmbAlimentazione);
@@ -165,11 +174,62 @@
             this.groupBoxVeicolo.Controls.Add(this.lblMarca);
             this.groupBoxVeicolo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxVeicolo.Location = new System.Drawing.Point(0, 253);
-            this.groupBoxVeicolo.Name = "groupBox1";
+            this.groupBoxVeicolo.Name = "groupBoxVeicolo";
             this.groupBoxVeicolo.Size = new System.Drawing.Size(784, 281);
             this.groupBoxVeicolo.TabIndex = 2;
             this.groupBoxVeicolo.TabStop = false;
             this.groupBoxVeicolo.Text = "Veicolo";
+            // 
+            // grpTipo
+            // 
+            this.grpTipo.Controls.Add(this.rdbFurgoni);
+            this.grpTipo.Controls.Add(this.rdbMoto);
+            this.grpTipo.Controls.Add(this.rdbAuto);
+            this.grpTipo.Location = new System.Drawing.Point(344, 210);
+            this.grpTipo.Name = "grpTipo";
+            this.grpTipo.Size = new System.Drawing.Size(200, 42);
+            this.grpTipo.TabIndex = 3;
+            this.grpTipo.TabStop = false;
+            this.grpTipo.Text = "Tipo";
+            // 
+            // rdbFurgoni
+            // 
+            this.rdbFurgoni.AutoCheck = false;
+            this.rdbFurgoni.AutoSize = true;
+            this.rdbFurgoni.Location = new System.Drawing.Point(120, 16);
+            this.rdbFurgoni.Name = "rdbFurgoni";
+            this.rdbFurgoni.Size = new System.Drawing.Size(78, 17);
+            this.rdbFurgoni.TabIndex = 2;
+            this.rdbFurgoni.TabStop = true;
+            this.rdbFurgoni.Text = "FURGONE";
+            this.rdbFurgoni.UseVisualStyleBackColor = true;
+            this.rdbFurgoni.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
+            // 
+            // rdbMoto
+            // 
+            this.rdbMoto.AutoCheck = false;
+            this.rdbMoto.AutoSize = true;
+            this.rdbMoto.Location = new System.Drawing.Point(61, 16);
+            this.rdbMoto.Name = "rdbMoto";
+            this.rdbMoto.Size = new System.Drawing.Size(57, 17);
+            this.rdbMoto.TabIndex = 1;
+            this.rdbMoto.TabStop = true;
+            this.rdbMoto.Text = "MOTO";
+            this.rdbMoto.UseVisualStyleBackColor = true;
+            this.rdbMoto.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
+            // 
+            // rdbAuto
+            // 
+            this.rdbAuto.AutoCheck = false;
+            this.rdbAuto.AutoSize = true;
+            this.rdbAuto.Location = new System.Drawing.Point(4, 16);
+            this.rdbAuto.Name = "rdbAuto";
+            this.rdbAuto.Size = new System.Drawing.Size(55, 17);
+            this.rdbAuto.TabIndex = 0;
+            this.rdbAuto.TabStop = true;
+            this.rdbAuto.Text = "AUTO";
+            this.rdbAuto.UseVisualStyleBackColor = true;
+            this.rdbAuto.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
             // 
             // chkAutomatica
             // 
@@ -185,13 +245,6 @@
             // cmbAlimentazione
             // 
             this.cmbAlimentazione.FormattingEnabled = true;
-            this.cmbAlimentazione.Items.AddRange(new object[] {
-            "Benzina",
-            "Diesel",
-            "Elettrica",
-            "Ibrida",
-            "GPL",
-            "Metano"});
             this.cmbAlimentazione.Location = new System.Drawing.Point(417, 125);
             this.cmbAlimentazione.Name = "cmbAlimentazione";
             this.cmbAlimentazione.Size = new System.Drawing.Size(125, 21);
@@ -329,53 +382,53 @@
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "Marca";
             // 
-            // grpTipo
+            // toolStripSplitButtonAddItem
             // 
-            this.grpTipo.Controls.Add(this.rdbFurgoni);
-            this.grpTipo.Controls.Add(this.rdbMoto);
-            this.grpTipo.Controls.Add(this.rdbAuto);
-            this.grpTipo.Location = new System.Drawing.Point(344, 210);
-            this.grpTipo.Name = "grpTipo";
-            this.grpTipo.Size = new System.Drawing.Size(200, 42);
-            this.grpTipo.TabIndex = 3;
-            this.grpTipo.TabStop = false;
-            this.grpTipo.Text = "Tipo";
+            this.toolStripSplitButtonAddItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButtonAddItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuovaAutoToolStripMenuItem,
+            this.nuovaMotoToolStripMenuItem,
+            this.nuovoFurgoneToolStripMenuItem});
+            this.toolStripSplitButtonAddItem.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButtonAddItem.Image")));
+            this.toolStripSplitButtonAddItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButtonAddItem.Name = "toolStripSplitButtonAddItem";
+            this.toolStripSplitButtonAddItem.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButtonAddItem.Text = "toolStripSplitButton1";
+            this.toolStripSplitButtonAddItem.ButtonClick += new System.EventHandler(this.toolStripSplitButtonAddItem_ButtonClick);
             // 
-            // rdbAuto
+            // nuovaAutoToolStripMenuItem
             // 
-            this.rdbAuto.AutoSize = true;
-            this.rdbAuto.Location = new System.Drawing.Point(4, 16);
-            this.rdbAuto.Name = "rdbAuto";
-            this.rdbAuto.Size = new System.Drawing.Size(55, 17);
-            this.rdbAuto.TabIndex = 0;
-            this.rdbAuto.TabStop = true;
-            this.rdbAuto.Text = "AUTO";
-            this.rdbAuto.UseVisualStyleBackColor = true;
-            this.rdbAuto.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
+            this.nuovaAutoToolStripMenuItem.Name = "nuovaAutoToolStripMenuItem";
+            this.nuovaAutoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuovaAutoToolStripMenuItem.Text = "Nuova Auto";
+            this.nuovaAutoToolStripMenuItem.Click += new System.EventHandler(this.nuovaAutoToolStripMenuItem_Click);
             // 
-            // rdbMoto
+            // nuovaMotoToolStripMenuItem
             // 
-            this.rdbMoto.AutoSize = true;
-            this.rdbMoto.Location = new System.Drawing.Point(61, 16);
-            this.rdbMoto.Name = "rdbMoto";
-            this.rdbMoto.Size = new System.Drawing.Size(57, 17);
-            this.rdbMoto.TabIndex = 1;
-            this.rdbMoto.TabStop = true;
-            this.rdbMoto.Text = "MOTO";
-            this.rdbMoto.UseVisualStyleBackColor = true;
-            this.rdbMoto.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
+            this.nuovaMotoToolStripMenuItem.Name = "nuovaMotoToolStripMenuItem";
+            this.nuovaMotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuovaMotoToolStripMenuItem.Text = "Nuova Moto";
             // 
-            // rdbFurgoni
+            // nuovoFurgoneToolStripMenuItem
             // 
-            this.rdbFurgoni.AutoSize = true;
-            this.rdbFurgoni.Location = new System.Drawing.Point(120, 16);
-            this.rdbFurgoni.Name = "rdbFurgoni";
-            this.rdbFurgoni.Size = new System.Drawing.Size(78, 17);
-            this.rdbFurgoni.TabIndex = 2;
-            this.rdbFurgoni.TabStop = true;
-            this.rdbFurgoni.Text = "FURGONE";
-            this.rdbFurgoni.UseVisualStyleBackColor = true;
-            this.rdbFurgoni.CheckedChanged += new System.EventHandler(this.rdbTipo_CheckedChanged);
+            this.nuovoFurgoneToolStripMenuItem.Name = "nuovoFurgoneToolStripMenuItem";
+            this.nuovoFurgoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuovoFurgoneToolStripMenuItem.Text = "Nuovo Furgone";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnSalva
+            // 
+            this.btnSalva.Location = new System.Drawing.Point(12, 246);
+            this.btnSalva.Name = "btnSalva";
+            this.btnSalva.Size = new System.Drawing.Size(307, 23);
+            this.btnSalva.TabIndex = 14;
+            this.btnSalva.Text = "SALVA";
+            this.btnSalva.UseVisualStyleBackColor = true;
+            this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
             // 
             // FormMain
             // 
@@ -393,9 +446,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).EndInit();
             this.groupBoxVeicolo.ResumeLayout(false);
             this.groupBoxVeicolo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).EndInit();
             this.grpTipo.ResumeLayout(false);
             this.grpTipo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,6 +487,12 @@
         private System.Windows.Forms.RadioButton rdbFurgoni;
         private System.Windows.Forms.RadioButton rdbMoto;
         private System.Windows.Forms.RadioButton rdbAuto;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonAddItem;
+        private System.Windows.Forms.ToolStripMenuItem nuovaAutoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuovaMotoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuovoFurgoneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Button btnSalva;
     }
 }
 
