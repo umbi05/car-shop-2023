@@ -17,7 +17,7 @@ namespace CarShopForm
 
         string PATHDATA = Directory.GetCurrentDirectory() + "\\veicoli.json";
 
-        List<Veicolo> veicoli;
+        BindingList<Veicolo> veicoli;
         public Veicolo veicoloSelezionato;
 
         UserControl groupBoxTipoSelezionato = new UserControl();
@@ -57,10 +57,10 @@ namespace CarShopForm
         //    txtMarca.DataBindings.Add("Text", veicoloSelezionato, "Marca");
         //}
 
-        private List<Auto> getAuto(List<Veicolo> veicoli)
+        private BindingList<Auto> getAuto(BindingList<Veicolo> veicoli)
         {
             //IEnumerable<Auto> auto = veicoli.FindAll(v => v is Auto).Cast<Auto>();
-            List<Auto> automobili = new List<Auto>();
+            BindingList<Auto> automobili = new BindingList<Auto>();
             foreach (var item in veicoli)
             {
                 if (item is Auto) automobili.Add(item as Auto);
@@ -68,9 +68,9 @@ namespace CarShopForm
             return automobili;
         }
 
-        private List<Moto> getMoto(List<Veicolo> veicoli)
+        private BindingList<Moto> getMoto(BindingList<Veicolo> veicoli)
         {
-            List<Moto> moto = new List<Moto>();
+            BindingList<Moto> moto = new BindingList<Moto>();
             foreach (var item in veicoli)
             {
                 if (item is Moto) moto.Add(item as Moto);
@@ -98,12 +98,12 @@ namespace CarShopForm
         {
             if (tsdShowSelected.Text == "AUTO")
             {
-                List<Auto> auto = getAuto(veicoli);
-                dgvVeicoli.DataSource = auto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
+                BindingList<Auto> auto = getAuto(veicoli);
+                //dgvVeicoli.DataSource = auto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
             } else if (tsdShowSelected.Text == "MOTO")
             {
-                List<Moto> moto = getMoto(veicoli);
-                dgvVeicoli.DataSource = moto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
+                BindingList<Moto> moto = getMoto(veicoli);
+                //dgvVeicoli.DataSource = moto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
             }
             //bindData();
         }
@@ -158,12 +158,23 @@ namespace CarShopForm
 
         private void nuovaAutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Auto> temp = getAuto(veicoli);
-            temp.Add(new Auto());
-            dgvVeicoli.DataSource = temp;
+            dgvVeicoli.DataSource = null;
+            veicoli.Add(new Auto());
+            dgvVeicoli.DataSource = getAuto(veicoli);
             dgvVeicoli.Rows[dgvVeicoli.RowCount - 1].Selected = true;
             txtMarca.Focus();
             tsdShowSelected.Text = "AUTO";
+            tstMarca.Text = "";
+        }
+
+        private void nuovaMotoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dgvVeicoli.DataSource = null;
+            veicoli.Add(new Moto());
+            dgvVeicoli.DataSource = getMoto(veicoli);
+            dgvVeicoli.Rows[dgvVeicoli.RowCount - 1].Selected = true;
+            txtMarca.Focus();
+            tsdShowSelected.Text = "MOTO";
             tstMarca.Text = "";
         }
 
@@ -174,9 +185,18 @@ namespace CarShopForm
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            copiaDatiDaControlli();
-            Tools.SerializeToJson(veicoli, PATHDATA);
-
+            if ((veicoloSelezionato.Marca == null) ||
+                (veicoloSelezionato.Marca.Length == 0) ||
+                (veicoloSelezionato.Modello == null) ||
+                (veicoloSelezionato.Modello.Length == 0))
+            {
+                MessageBox.Show("Inserire almeno Marca e Modello");
+            }
+            else
+            {
+                copiaDatiDaControlli();
+                Tools.SerializeToJson(veicoli, PATHDATA);
+            }
         }
 
         private void copiaDatiDaControlli()
@@ -242,5 +262,6 @@ namespace CarShopForm
                 dgvVeicoli.Rows[nRigaSelezionata].Selected = true;
             }
         }
+
     }
 }

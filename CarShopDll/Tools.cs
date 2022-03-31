@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace CarShopDll
     {
         static JsonSerializerSettings jsonSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
        
-        public static string SerializeToJson(List<Veicolo> veicoli, string filePath = null)
+        public static string SerializeToJson(BindingList<Veicolo> veicoli, string filePath = null)
         {
             string serializedData = JsonConvert.SerializeObject(veicoli, jsonSettings);
                 
@@ -21,12 +22,12 @@ namespace CarShopDll
             return serializedData;
         }
 
-        public static List<Veicolo> DeserializeFromJson(string json)
+        public static BindingList<Veicolo> DeserializeFromJson(string json)
         {
-            return JsonConvert.DeserializeObject<List<Veicolo>>(json, jsonSettings);
+            return JsonConvert.DeserializeObject<BindingList<Veicolo>>(json, jsonSettings);
         }
 
-        public static List<Veicolo> DeserializeFromFile(string filePath)
+        public static BindingList<Veicolo> DeserializeFromFile(string filePath)
         {
             string dataFromFile = File.ReadAllText(filePath);
             return DeserializeFromJson(dataFromFile);
