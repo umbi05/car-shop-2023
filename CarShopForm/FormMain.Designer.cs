@@ -66,6 +66,7 @@
             this.lblColore = new System.Windows.Forms.Label();
             this.lblModello = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
+            this.btnElimina = new System.Windows.Forms.Button();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).BeginInit();
             this.groupBoxVeicolo.SuspendLayout();
@@ -167,7 +168,7 @@
             // nuovaMotoToolStripMenuItem
             // 
             this.nuovaMotoToolStripMenuItem.Name = "nuovaMotoToolStripMenuItem";
-            this.nuovaMotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuovaMotoToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.nuovaMotoToolStripMenuItem.Text = "Nuova Moto";
             this.nuovaMotoToolStripMenuItem.Click += new System.EventHandler(this.nuovaMotoToolStripMenuItem_Click);
             // 
@@ -193,6 +194,7 @@
             // 
             // groupBoxVeicolo
             // 
+            this.groupBoxVeicolo.Controls.Add(this.btnElimina);
             this.groupBoxVeicolo.Controls.Add(this.btnSalva);
             this.groupBoxVeicolo.Controls.Add(this.grpTipo);
             this.groupBoxVeicolo.Controls.Add(this.chkAutomatica);
@@ -432,6 +434,16 @@
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "Marca";
             // 
+            // btnElimina
+            // 
+            this.btnElimina.Location = new System.Drawing.Point(12, 210);
+            this.btnElimina.Name = "btnElimina";
+            this.btnElimina.Size = new System.Drawing.Size(307, 23);
+            this.btnElimina.TabIndex = 15;
+            this.btnElimina.Text = "ELIMINA";
+            this.btnElimina.UseVisualStyleBackColor = true;
+            this.btnElimina.Click += new System.EventHandler(this.btnElimina_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +507,7 @@
         private System.Windows.Forms.ToolStripMenuItem nuovoFurgoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Button btnSalva;
+        private System.Windows.Forms.Button btnElimina;
     }
 }
 

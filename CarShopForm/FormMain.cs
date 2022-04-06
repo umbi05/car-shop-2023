@@ -185,10 +185,8 @@ namespace CarShopForm
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            if ((veicoloSelezionato.Marca == null) ||
-                (veicoloSelezionato.Marca.Length == 0) ||
-                (veicoloSelezionato.Modello == null) ||
-                (veicoloSelezionato.Modello.Length == 0))
+            if ((txtMarca.Text.Length == 0) ||
+                (txtModello.Text.Length == 0))
             {
                 MessageBox.Show("Inserire almeno Marca e Modello");
             }
@@ -263,5 +261,23 @@ namespace CarShopForm
             }
         }
 
+        private void btnElimina_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(
+                "Confermi di voler eliminare questo veicolo?", 
+                "ELIMINA?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) 
+                == DialogResult.Yes)
+            {
+                veicoli.Remove(veicoloSelezionato);
+                dgvVeicoli.DataSource = null;
+                Tools.SerializeToJson(veicoli, PATHDATA);
+                if (veicoloSelezionato is Auto)
+                    dgvVeicoli.DataSource = getAuto(veicoli);
+                else
+                    dgvVeicoli.DataSource = getMoto(veicoli);
+            }
+        }
     }
 }
