@@ -42,12 +42,26 @@ namespace CarShopForm
             if (File.Exists(PATHDATA))
             {
                 veicoli = Tools.DeserializeFromFile(PATHDATA);
-                dgvVeicoli.DataSource = getAuto(veicoli);
-                //bindData();
+                bindDataGridView("AUTO", veicoli);
             }
             else
             {
                 MessageBox.Show("Dati non disponibili");
+            }
+        }
+
+        private void bindDataGridView(string tipoVeicolo, BindingList<Veicolo> veicoli)
+        {
+            dgvVeicoli.DataSource = null;
+            if (tipoVeicolo.ToUpper()=="AUTO")
+            {
+                dgvVeicoli.DataSource = getAuto(veicoli);
+                columnDisplayOrder("Marca,Modello,Targa,Colore,Alimentazione,Prezzo,Trazione,Cilindrata,Potenza,DataImmatricolazione", dgvVeicoli);
+            }
+            else if (tipoVeicolo.ToUpper() == "MOTO")
+            {
+                dgvVeicoli.DataSource = getMoto(veicoli);
+                columnDisplayOrder("Marca,Modello,Targa,Prezzo,Tipo,Colore", dgvVeicoli);
             }
         }
 
@@ -78,34 +92,42 @@ namespace CarShopForm
             return moto;
         }
 
+        private void columnDisplayOrder(string columnList, DataGridView gridView)
+        {
+            var columnListArray = columnList.Split(',');
+            for (var i = 0; i < columnListArray.Length; i++)
+            {
+                var gridViewColumn = gridView.Columns[columnListArray[i].Trim()];
+                if (gridViewColumn != null)
+                    gridViewColumn.DisplayIndex = i;
+            }
+        }
+
         private void aUTOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dgvVeicoli.DataSource = getAuto(veicoli);
-            //bindData();
+            bindDataGridView("AUTO", veicoli);
             tsdShowSelected.Text = "AUTO";
             tstMarca.Text = "";
         }
 
         private void mOTOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dgvVeicoli.DataSource = getMoto(veicoli);
-            //bindData();
+            bindDataGridView("MOTO", veicoli);
             tsdShowSelected.Text = "MOTO";
             tstMarca.Text = "";
         }
 
         private void tstMarca_TextChanged(object sender, EventArgs e)
         {
+            BindingList<Veicolo> filteredVeicoli = new BindingList<Veicolo>(veicoli.Where
+                (v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper())).ToList());
             if (tsdShowSelected.Text == "AUTO")
             {
-                BindingList<Auto> auto = getAuto(veicoli);
-                //dgvVeicoli.DataSource = auto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
+                bindDataGridView("AUTO", filteredVeicoli);
             } else if (tsdShowSelected.Text == "MOTO")
             {
-                BindingList<Moto> moto = getMoto(veicoli);
-                //dgvVeicoli.DataSource = moto.FindAll(v => v.Marca.ToUpper().StartsWith(tstMarca.Text.ToUpper()));
+                bindDataGridView("MOTO", filteredVeicoli);
             }
-            //bindData();
         }
 
         private void dgvVeicoli_SelectionChanged(object sender, EventArgs e)
@@ -158,9 +180,8 @@ namespace CarShopForm
 
         private void nuovaAutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dgvVeicoli.DataSource = null;
             veicoli.Add(new Auto());
-            dgvVeicoli.DataSource = getAuto(veicoli);
+            bindDataGridView("AUTO", veicoli);
             dgvVeicoli.Rows[dgvVeicoli.RowCount - 1].Selected = true;
             txtMarca.Focus();
             tsdShowSelected.Text = "AUTO";
@@ -169,9 +190,8 @@ namespace CarShopForm
 
         private void nuovaMotoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dgvVeicoli.DataSource = null;
             veicoli.Add(new Moto());
-            dgvVeicoli.DataSource = getMoto(veicoli);
+            bindDataGridView("MOTO", veicoli);
             dgvVeicoli.Rows[dgvVeicoli.RowCount - 1].Selected = true;
             txtMarca.Focus();
             tsdShowSelected.Text = "MOTO";
@@ -194,6 +214,7 @@ namespace CarShopForm
             {
                 copiaDatiDaControlli();
                 Tools.SerializeToJson(veicoli, PATHDATA);
+                tstMarca.Text = "";
             }
         }
 
@@ -238,7 +259,7 @@ namespace CarShopForm
                     auto.DiametroCerchi = (int)gbAuto.numCerchi.Value;
                     auto.NPorte = (int)gbAuto.numPorte.Value;
                     auto.Allestimento = gbAuto.txtAllestimento.Text;
-                    dgvVeicoli.DataSource = getAuto(veicoli);
+                    bindDataGridView("AUTO", veicoli);
                 }
                 else if (veicoloSelezionato is Moto)
                 {
@@ -251,7 +272,7 @@ namespace CarShopForm
                     moto.HasAbs = gbMoto.chkAbs.Checked;
                     moto.HasCts = gbMoto.chkCts.Checked;
                     moto.HasBauletto = gbMoto.chkBauletto.Checked;
-                    dgvVeicoli.DataSource = getMoto(veicoli);
+                    bindDataGridView("MOTO", veicoli);
                 }
                 else
                 {
@@ -271,12 +292,12 @@ namespace CarShopForm
                 == DialogResult.Yes)
             {
                 veicoli.Remove(veicoloSelezionato);
-                dgvVeicoli.DataSource = null;
                 Tools.SerializeToJson(veicoli, PATHDATA);
                 if (veicoloSelezionato is Auto)
-                    dgvVeicoli.DataSource = getAuto(veicoli);
+                    bindDataGridView("AUTO", veicoli);
                 else
-                    dgvVeicoli.DataSource = getMoto(veicoli);
+                    bindDataGridView("MOTO", veicoli);
+                tstMarca.Text = "";
             }
         }
     }
