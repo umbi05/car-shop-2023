@@ -66,7 +66,9 @@
             this.lblColore = new System.Windows.Forms.Label();
             this.lblModello = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.btnElimina = new System.Windows.Forms.Button();
+            this.btnAnnulla = new System.Windows.Forms.Button();
+            this.tsbModifica = new System.Windows.Forms.ToolStripButton();
+            this.tsbElimina = new System.Windows.Forms.ToolStripButton();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).BeginInit();
             this.groupBoxVeicolo.SuspendLayout();
@@ -82,7 +84,9 @@
             this.tslMarca,
             this.tstMarca,
             this.toolStripSeparator2,
-            this.toolStripSplitButtonAddItem});
+            this.toolStripSplitButtonAddItem,
+            this.tsbModifica,
+            this.tsbElimina});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(784, 25);
@@ -194,7 +198,7 @@
             // 
             // groupBoxVeicolo
             // 
-            this.groupBoxVeicolo.Controls.Add(this.btnElimina);
+            this.groupBoxVeicolo.Controls.Add(this.btnAnnulla);
             this.groupBoxVeicolo.Controls.Add(this.btnSalva);
             this.groupBoxVeicolo.Controls.Add(this.grpTipo);
             this.groupBoxVeicolo.Controls.Add(this.chkAutomatica);
@@ -226,7 +230,7 @@
             // 
             this.btnSalva.Location = new System.Drawing.Point(12, 246);
             this.btnSalva.Name = "btnSalva";
-            this.btnSalva.Size = new System.Drawing.Size(307, 23);
+            this.btnSalva.Size = new System.Drawing.Size(144, 23);
             this.btnSalva.TabIndex = 14;
             this.btnSalva.Text = "SALVA";
             this.btnSalva.UseVisualStyleBackColor = true;
@@ -434,15 +438,35 @@
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "Marca";
             // 
-            // btnElimina
+            // btnAnnulla
             // 
-            this.btnElimina.Location = new System.Drawing.Point(12, 210);
-            this.btnElimina.Name = "btnElimina";
-            this.btnElimina.Size = new System.Drawing.Size(307, 23);
-            this.btnElimina.TabIndex = 15;
-            this.btnElimina.Text = "ELIMINA";
-            this.btnElimina.UseVisualStyleBackColor = true;
-            this.btnElimina.Click += new System.EventHandler(this.btnElimina_Click);
+            this.btnAnnulla.Location = new System.Drawing.Point(179, 246);
+            this.btnAnnulla.Name = "btnAnnulla";
+            this.btnAnnulla.Size = new System.Drawing.Size(140, 23);
+            this.btnAnnulla.TabIndex = 4;
+            this.btnAnnulla.Text = "ANNULLA";
+            this.btnAnnulla.UseVisualStyleBackColor = true;
+            this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
+            // 
+            // tsbModifica
+            // 
+            this.tsbModifica.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbModifica.Image = ((System.Drawing.Image)(resources.GetObject("tsbModifica.Image")));
+            this.tsbModifica.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbModifica.Name = "tsbModifica";
+            this.tsbModifica.Size = new System.Drawing.Size(58, 22);
+            this.tsbModifica.Text = "Modifica";
+            this.tsbModifica.Click += new System.EventHandler(this.tsbModifica_Click);
+            // 
+            // tsbElimina
+            // 
+            this.tsbElimina.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbElimina.Image = ((System.Drawing.Image)(resources.GetObject("tsbElimina.Image")));
+            this.tsbElimina.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbElimina.Name = "tsbElimina";
+            this.tsbElimina.Size = new System.Drawing.Size(50, 22);
+            this.tsbElimina.Text = "Elimina";
+            this.tsbElimina.Click += new System.EventHandler(this.btnElimina_Click);
             // 
             // FormMain
             // 
@@ -507,7 +531,9 @@
         private System.Windows.Forms.ToolStripMenuItem nuovoFurgoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Button btnSalva;
-        private System.Windows.Forms.Button btnElimina;
+        private System.Windows.Forms.Button btnAnnulla;
+        private System.Windows.Forms.ToolStripButton tsbModifica;
+        private System.Windows.Forms.ToolStripButton tsbElimina;
     }
 }
 

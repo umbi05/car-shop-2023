@@ -63,6 +63,7 @@ namespace CarShopForm
                 dgvVeicoli.DataSource = getMoto(veicoli);
                 columnDisplayOrder("Marca,Modello,Targa,Prezzo,Tipo,Colore", dgvVeicoli);
             }
+            groupBoxVeicolo.Enabled = false;
         }
 
         //private void bindData()
@@ -135,25 +136,7 @@ namespace CarShopForm
             if (dgvVeicoli.SelectedRows.Count > 0)
             {
                 veicoloSelezionato = (Veicolo)dgvVeicoli.SelectedRows[0].DataBoundItem;
-                txtMarca.Text = veicoloSelezionato.Marca;
-                txtModello.Text = veicoloSelezionato.Modello;
-                txtColore.Text = veicoloSelezionato.Colore;
-                txtTarga.Text = veicoloSelezionato.Targa;
-                txtDescrizione.Text = veicoloSelezionato.Descrizione;
-                numPrezzo.Value = (decimal)veicoloSelezionato.Prezzo;
-                try
-                {
-                    dateImmatricolazione.Value = veicoloSelezionato.DataImmatricolazione;
-                }
-                catch (Exception)
-                {
-                    dateImmatricolazione.Value = DateTimePicker.MinimumDateTime;
-                }
-                chkAutomatica.Checked = veicoloSelezionato.IsAutomatico;
-                cmbAlimentazione.SelectedItem = veicoloSelezionato.Alimentazione;
-                rdbAuto.Checked = rdbMoto.Checked = false;
-                rdbAuto.Checked = veicoloSelezionato is Auto;
-                rdbMoto.Checked = veicoloSelezionato is Moto;
+                copiaDatiOriginali();
             }
         }
 
@@ -180,22 +163,28 @@ namespace CarShopForm
 
         private void nuovaAutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            veicoli.Add(new Auto());
+            Auto autoToAdd = new Auto();
+            autoToAdd.isNew = true;
+            veicoli.Add(autoToAdd);
             bindDataGridView("AUTO", veicoli);
             dgvVeicoli.Rows[dgvVeicoli.RowCount - 1].Selected = true;
             txtMarca.Focus();
             tsdShowSelected.Text = "AUTO";
             tstMarca.Text = "";
+            groupBoxVeicolo.Enabled = true;
         }
 
         private void nuovaMotoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            veicoli.Add(new Moto());
+            Moto motoToAdd = new Moto();
+            motoToAdd.isNew = true;
+            veicoli.Add(motoToAdd);
             bindDataGridView("MOTO", veicoli);
             dgvVeicoli.Rows[dgvVeicoli.RowCount - 1].Selected = true;
             txtMarca.Focus();
             tsdShowSelected.Text = "MOTO";
             tstMarca.Text = "";
+            groupBoxVeicolo.Enabled = true;
         }
 
         private void toolStripSplitButtonAddItem_ButtonClick(object sender, EventArgs e)
@@ -212,6 +201,7 @@ namespace CarShopForm
             }
             else
             {
+                veicoloSelezionato.isNew = false;
                 copiaDatiDaControlli();
                 Tools.SerializeToJson(veicoli, PATHDATA);
                 tstMarca.Text = "";
@@ -298,6 +288,89 @@ namespace CarShopForm
                 else
                     bindDataGridView("MOTO", veicoli);
                 tstMarca.Text = "";
+            }
+        }
+
+        private void tsbModifica_Click(object sender, EventArgs e)
+        {
+            groupBoxVeicolo.Enabled = true;
+        }
+
+        private void btnAnnulla_Click(object sender, EventArgs e)
+        {
+            if (veicoloSelezionato.isNew)
+            {
+                veicoli.Remove(veicoloSelezionato);
+                bindDataGridView(veicoloSelezionato.GetType().Name.ToUpper(), veicoli);
+            }
+            else
+            {
+                copiaDatiOriginali();
+                groupBoxVeicolo.Enabled = false; ;
+            }
+        }
+
+        private void copiaDatiOriginali()
+        {
+            txtMarca.Text = veicoloSelezionato.Marca;
+            txtModello.Text = veicoloSelezionato.Modello;
+            txtColore.Text = veicoloSelezionato.Colore;
+            txtTarga.Text = veicoloSelezionato.Targa;
+            txtDescrizione.Text = veicoloSelezionato.Descrizione;
+            numPrezzo.Value = (decimal)veicoloSelezionato.Prezzo;
+            try
+            {
+                dateImmatricolazione.Value = veicoloSelezionato.DataImmatricolazione;
+            }
+            catch (Exception)
+            {
+                dateImmatricolazione.Value = DateTimePicker.MinimumDateTime;
+            }
+            chkAutomatica.Checked = veicoloSelezionato.IsAutomatico;
+            cmbAlimentazione.SelectedItem = veicoloSelezionato.Alimentazione;
+            rdbAuto.Checked = rdbMoto.Checked = false;
+            rdbAuto.Checked = veicoloSelezionato is Auto;
+            rdbMoto.Checked = veicoloSelezionato is Moto;
+        }
+        private void copiaDettagliOriginali()
+        {
+            if (veicoloSelezionato is Auto)
+            {
+                // Auto
+                Auto auto = (Auto)veicoloSelezionato;
+                GroupBoxAuto gbAuto = (GroupBoxAuto)groupBoxTipoSelezionato;
+                ComboBox cb = gbAuto.cmbTrazione;
+                try
+                {
+                    auto.Trazione = (ETrazione)cb.SelectedItem;
+                }
+                catch (Exception)
+                {
+                    auto.Trazione = ETrazione.NonDichiarata;
+                }
+                auto.IsCabrio = gbAuto.chkCabrio.Checked;
+                auto.HasFendinebbia = gbAuto.chkFendinebbia.Checked;
+                auto.DiametroCerchi = (int)gbAuto.numCerchi.Value;
+                auto.NPorte = (int)gbAuto.numPorte.Value;
+                auto.Allestimento = gbAuto.txtAllestimento.Text;
+                bindDataGridView("AUTO", veicoli);
+            }
+            else if (veicoloSelezionato is Moto)
+            {
+                // Moto
+                Moto moto = (Moto)veicoloSelezionato;
+                GroupBoxMoto gbMoto = (GroupBoxMoto)groupBoxTipoSelezionato;
+                ComboBox cb = gbMoto.cmbTipo;
+                moto.Cilindri = (int)gbMoto.numCilindri.Value;
+                moto.Tempi = (int)gbMoto.numTempi.Value;
+                moto.HasAbs = gbMoto.chkAbs.Checked;
+                moto.HasCts = gbMoto.chkCts.Checked;
+                moto.HasBauletto = gbMoto.chkBauletto.Checked;
+                bindDataGridView("MOTO", veicoli);
+            }
+            else
+            {
+                // Furgone
             }
         }
     }
