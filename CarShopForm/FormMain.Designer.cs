@@ -42,8 +42,11 @@
             this.nuovaAutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuovaMotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuovoFurgoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbModifica = new System.Windows.Forms.ToolStripButton();
+            this.tsbElimina = new System.Windows.Forms.ToolStripButton();
             this.dgvVeicoli = new System.Windows.Forms.DataGridView();
             this.groupBoxVeicolo = new System.Windows.Forms.GroupBox();
+            this.btnAnnulla = new System.Windows.Forms.Button();
             this.btnSalva = new System.Windows.Forms.Button();
             this.grpTipo = new System.Windows.Forms.GroupBox();
             this.rdbFurgoni = new System.Windows.Forms.RadioButton();
@@ -66,9 +69,6 @@
             this.lblColore = new System.Windows.Forms.Label();
             this.lblModello = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.btnAnnulla = new System.Windows.Forms.Button();
-            this.tsbModifica = new System.Windows.Forms.ToolStripButton();
-            this.tsbElimina = new System.Windows.Forms.ToolStripButton();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeicoli)).BeginInit();
             this.groupBoxVeicolo.SuspendLayout();
@@ -165,22 +165,42 @@
             // nuovaAutoToolStripMenuItem
             // 
             this.nuovaAutoToolStripMenuItem.Name = "nuovaAutoToolStripMenuItem";
-            this.nuovaAutoToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.nuovaAutoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuovaAutoToolStripMenuItem.Text = "Nuova Auto";
             this.nuovaAutoToolStripMenuItem.Click += new System.EventHandler(this.nuovaAutoToolStripMenuItem_Click);
             // 
             // nuovaMotoToolStripMenuItem
             // 
             this.nuovaMotoToolStripMenuItem.Name = "nuovaMotoToolStripMenuItem";
-            this.nuovaMotoToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.nuovaMotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuovaMotoToolStripMenuItem.Text = "Nuova Moto";
             this.nuovaMotoToolStripMenuItem.Click += new System.EventHandler(this.nuovaMotoToolStripMenuItem_Click);
             // 
             // nuovoFurgoneToolStripMenuItem
             // 
             this.nuovoFurgoneToolStripMenuItem.Name = "nuovoFurgoneToolStripMenuItem";
-            this.nuovoFurgoneToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.nuovoFurgoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuovoFurgoneToolStripMenuItem.Text = "Nuovo Furgone";
+            // 
+            // tsbModifica
+            // 
+            this.tsbModifica.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbModifica.Image = ((System.Drawing.Image)(resources.GetObject("tsbModifica.Image")));
+            this.tsbModifica.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbModifica.Name = "tsbModifica";
+            this.tsbModifica.Size = new System.Drawing.Size(58, 22);
+            this.tsbModifica.Text = "Modifica";
+            this.tsbModifica.Click += new System.EventHandler(this.tsbModifica_Click);
+            // 
+            // tsbElimina
+            // 
+            this.tsbElimina.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbElimina.Image = ((System.Drawing.Image)(resources.GetObject("tsbElimina.Image")));
+            this.tsbElimina.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbElimina.Name = "tsbElimina";
+            this.tsbElimina.Size = new System.Drawing.Size(50, 22);
+            this.tsbElimina.Text = "Elimina";
+            this.tsbElimina.Click += new System.EventHandler(this.btnElimina_Click);
             // 
             // dgvVeicoli
             // 
@@ -225,6 +245,16 @@
             this.groupBoxVeicolo.TabIndex = 2;
             this.groupBoxVeicolo.TabStop = false;
             this.groupBoxVeicolo.Text = "Veicolo";
+            // 
+            // btnAnnulla
+            // 
+            this.btnAnnulla.Location = new System.Drawing.Point(179, 246);
+            this.btnAnnulla.Name = "btnAnnulla";
+            this.btnAnnulla.Size = new System.Drawing.Size(140, 23);
+            this.btnAnnulla.TabIndex = 4;
+            this.btnAnnulla.Text = "ANNULLA";
+            this.btnAnnulla.UseVisualStyleBackColor = true;
+            this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
             // 
             // btnSalva
             // 
@@ -438,36 +468,6 @@
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "Marca";
             // 
-            // btnAnnulla
-            // 
-            this.btnAnnulla.Location = new System.Drawing.Point(179, 246);
-            this.btnAnnulla.Name = "btnAnnulla";
-            this.btnAnnulla.Size = new System.Drawing.Size(140, 23);
-            this.btnAnnulla.TabIndex = 4;
-            this.btnAnnulla.Text = "ANNULLA";
-            this.btnAnnulla.UseVisualStyleBackColor = true;
-            this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
-            // 
-            // tsbModifica
-            // 
-            this.tsbModifica.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbModifica.Image = ((System.Drawing.Image)(resources.GetObject("tsbModifica.Image")));
-            this.tsbModifica.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbModifica.Name = "tsbModifica";
-            this.tsbModifica.Size = new System.Drawing.Size(58, 22);
-            this.tsbModifica.Text = "Modifica";
-            this.tsbModifica.Click += new System.EventHandler(this.tsbModifica_Click);
-            // 
-            // tsbElimina
-            // 
-            this.tsbElimina.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbElimina.Image = ((System.Drawing.Image)(resources.GetObject("tsbElimina.Image")));
-            this.tsbElimina.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbElimina.Name = "tsbElimina";
-            this.tsbElimina.Size = new System.Drawing.Size(50, 22);
-            this.tsbElimina.Text = "Elimina";
-            this.tsbElimina.Click += new System.EventHandler(this.btnElimina_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +478,7 @@
             this.Controls.Add(this.toolStripMain);
             this.Name = "FormMain";
             this.Text = "RIVENDITA VEICOLI VALLAURI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
