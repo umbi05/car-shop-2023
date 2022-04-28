@@ -172,6 +172,7 @@ namespace CarShopForm
             tsdShowSelected.Text = "AUTO";
             tstMarca.Text = "";
             groupBoxVeicolo.Enabled = true;
+            dgvVeicoli.Enabled = false;
         }
 
         private void nuovaMotoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -185,6 +186,7 @@ namespace CarShopForm
             tsdShowSelected.Text = "MOTO";
             tstMarca.Text = "";
             groupBoxVeicolo.Enabled = true;
+            dgvVeicoli.Enabled = false;
         }
 
         private void toolStripSplitButtonAddItem_ButtonClick(object sender, EventArgs e)
@@ -206,6 +208,7 @@ namespace CarShopForm
                 Tools.SerializeToJson(veicoli, PATHDATA);
                 tstMarca.Text = "";
             }
+            dgvVeicoli.Enabled = true;
         }
 
         private void copiaDatiDaControlli()
@@ -294,6 +297,7 @@ namespace CarShopForm
         private void tsbModifica_Click(object sender, EventArgs e)
         {
             groupBoxVeicolo.Enabled = true;
+            dgvVeicoli.Enabled = false;
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)
@@ -308,6 +312,7 @@ namespace CarShopForm
                 copiaDatiOriginali();
                 groupBoxVeicolo.Enabled = false; ;
             }
+            dgvVeicoli.Enabled = true;
         }
 
         private void copiaDatiOriginali()
@@ -371,6 +376,16 @@ namespace CarShopForm
             else
             {
                 // Furgone
+            }
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (dgvVeicoli.Enabled == false)
+            {
+                MessageBox.Show("Prima di uscire, salvare o annullare!", "ATTENZIONE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
             }
         }
     }
