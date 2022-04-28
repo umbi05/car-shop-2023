@@ -1,6 +1,7 @@
 ﻿using CarShopDll;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace CarShopConsole
     class Program
     {
         static string PATHDATA = Directory.GetCurrentDirectory() + "\\veicoli.json";
-        static List<Veicolo> veicoli = new List<Veicolo>();
+        static BindingList<Veicolo> veicoli = new BindingList<Veicolo>();
 
         static void Main(string[] args)
         {
@@ -21,7 +22,7 @@ namespace CarShopConsole
                 Console.Clear();
                 Console.WriteLine("*** RIVENDITA VEICOLI USATI ***");
                 Console.WriteLine("1. Create test data");
-                Console.WriteLine("2. Serialize to disk (veicoli.json");
+                Console.WriteLine("2. Serialize to disk (veicoli.json)");
                 Console.WriteLine("3. Load (deserialize) from disk");
                 Console.WriteLine("4. Show data");
                 Console.WriteLine("Q. QUIT");
