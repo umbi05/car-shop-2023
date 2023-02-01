@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarShopLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace CarShopConsole
     {
         static void Main(string[] args)
         {
+            Console.Write(ClsTest.HelloWorld("Oscar"));
+            Console.ReadKey();
         }
     }
 }
