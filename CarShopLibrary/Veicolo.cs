@@ -10,5 +10,11 @@ namespace CarShopLibrary
     {
         public string Marca { get; set; }
         public string Modello { get; set; }
+
+        public Veicolo(string marca, string modello)
+        {
+            Marca = marca;
+            Modello = modello;
+        }
     }
 }
