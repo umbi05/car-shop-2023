@@ -16,5 +16,10 @@ namespace CarShopLibrary
             Marca = marca;
             Modello = modello;
         }
+
+        public override string ToString()
+        {
+            return Marca + " " + Modello;
+        }
     }
 }

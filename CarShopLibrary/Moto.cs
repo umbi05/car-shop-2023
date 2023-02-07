@@ -9,6 +9,7 @@ namespace CarShopLibrary
 {
     public enum TipoMoto
     {
+        Undefined,
         Cross,
         Enduro,
         Strada,
@@ -27,6 +28,14 @@ namespace CarShopLibrary
         {
             Tipo = tipo;
             NumTempi = numTempi;
+        }
+
+        public override string ToString()
+        {
+            string stOut = base.ToString();
+            if (Tipo != TipoMoto.Undefined) stOut += " Tipo: " + Tipo;
+            if (NumTempi > 0) stOut += " Num.Tempi: " + NumTempi;
+            return stOut;
         }
     }
 }

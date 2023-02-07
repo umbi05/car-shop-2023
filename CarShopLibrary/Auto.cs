@@ -19,5 +19,14 @@ namespace CarShopLibrary
             IsAWD = isAWD;
             NumPorte = numPorte;
         }
+
+        public override string ToString()
+        {
+            string stOut = base.ToString();
+            if (IsAWD) stOut += " INTEGRALE";
+            if (NumPorte > 0) stOut += " Num.Porte: " + NumPorte;
+            return stOut;
+        }
+             
     }
 }
