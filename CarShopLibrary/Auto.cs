@@ -16,7 +16,7 @@ namespace CarShopLibrary
         public Auto(string marca, string modello, EAlimentazione alimentazione, string colore)
             : base(marca, modello, alimentazione, colore) { }
 
-        public Auto(string marca, string modello, EAlimentazione alimentazione, string colore, 
+        public Auto(string marca, string modello, EAlimentazione alimentazione, string colore,
             bool isAWD, int numPorte, int dimCerchi)
             : this(marca, modello, alimentazione, colore)
         {
@@ -25,28 +25,11 @@ namespace CarShopLibrary
             DimCerchi = dimCerchi;
         }
 
-        /*
-        public Auto(string marca, string modello, string vin, 
-            string colore, int km, EAlimentazione alimentazione, int maxSpeed, 
-            int potenza, DateTime dataImmatricolazione, int prezzo, 
-            bool isAWD, int numPorte, int dimCerchi) 
-            : this(marca, modello, isAWD, numPorte, dimCerchi)
-        {
-            VIN = vin;
-            Colore = colore;
-            Km = km;
-            Alimentazione = alimentazione;
-            MaxSpeed = maxSpeed;
-            Potenza = potenza;
-            DataImmatricolazione = dataImmatricolazione;
-            Prezzo = prezzo;
-        }
-        */
-
-        public Auto(string marca, string modello, string vin,
-            string colore, int km, EAlimentazione alimentazione, int maxSpeed,
-            int potenza, DateTime dataImmatricolazione, int prezzo,
-            bool isAWD, int numPorte, int dimCerchi)
+        public Auto(string marca, string modello, EAlimentazione alimentazione, string colore,
+            string vin, int km, int maxSpeed,
+            bool isAWD, int numPorte, int dimCerchi,
+            int potenza, DateTime dataImmatricolazione, int prezzo
+            )
             : base(marca, modello, vin, colore, km, alimentazione, maxSpeed, potenza, dataImmatricolazione, prezzo)
         {
             IsAWD = isAWD;

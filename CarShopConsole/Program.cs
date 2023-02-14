@@ -45,7 +45,7 @@ namespace CarShopConsole
             {
                 if (tipo == null || tipo == item.GetType()) { 
                     conta++;
-                    Console.WriteLine(conta.ToString() + " - " +  item.ToString());
+                    Console.WriteLine(conta.ToString() + " - " +  item.ToString(true));
                 }
             }
             Console.WriteLine("\n");
@@ -66,12 +66,17 @@ namespace CarShopConsole
             ParcoMezzi.Add(v);
             v = new Auto("Mercedes", "CLA", EAlimentazione.Diesel, "Grigio", true, 5, 18);
             ParcoMezzi.Add(v);
-            v = new Moto("Yamaha", "KZ5", EAlimentazione.Benzina, "Verde");
+            v = new Moto("Yamaha", "KZ5", EAlimentazione.Benzina, "Verde", 
+                "A34DE76PLYT90", 3500, 210,
+                ETipoMoto.Enduro, 4,
+                130, new DateTime(2021,03,15), 12750);
             ParcoMezzi.Add(v);
             v = new Moto("Ducati", "RossoFuoco", EAlimentazione.Benzina, "Rosso", ETipoMoto.Strada, 4);
             ParcoMezzi.Add(v);
-            v = new Auto("Fiat", "500", "TR5654ER55YJT5", "Bianco", 37500, EAlimentazione.Elettrica,
-                140, 90, new DateTime(2021, 10, 13), 17500, false, 3, 16);
+            v = new Auto("Fiat", "500", EAlimentazione.Elettrica, "Bianco", 
+                "TR5654ER55YJT5", 37500, 140,
+                false, 3, 16,
+                90, new DateTime(2021, 10, 13), 17500);
             ParcoMezzi.Add(v);
         }
     }

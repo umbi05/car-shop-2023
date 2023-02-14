@@ -60,7 +60,7 @@ namespace CarShopLibrary
         {
             string stOut = ToString();
             if (isExtended)
-                stOut += $" - Km {Km} - Prezzo {Prezzo} Euro";
+                stOut += $" (Km {Km} - Prezzo {Prezzo} Euro)";
             return stOut;
         }
 

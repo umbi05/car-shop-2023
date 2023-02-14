@@ -33,28 +33,11 @@ namespace CarShopLibrary
             NumTempi = numTempi;
         }
 
-        /*
-        public Moto(string marca, string modello, string vin,
-            string colore, int km, EAlimentazione alimentazione, int maxSpeed,
-            int potenza, DateTime dataImmatricolazione, int prezzo,
-            ETipoMoto tipo, int numTempi)
-            : this(marca, modello, tipo, numTempi)
-        {
-            VIN = vin;
-            Colore = colore;
-            Km = km;
-            Alimentazione = alimentazione;
-            MaxSpeed = maxSpeed;
-            Potenza = potenza;
-            DataImmatricolazione = dataImmatricolazione;
-            Prezzo = prezzo;
-        }
-        */
-
-        public Moto(string marca, string modello, string vin,
-            string colore, int km, EAlimentazione alimentazione, int maxSpeed,
-            int potenza, DateTime dataImmatricolazione, int prezzo,
-            ETipoMoto tipo, int numTempi)
+        public Moto(string marca, string modello, EAlimentazione alimentazione, string colore, 
+            string vin, int km,  int maxSpeed,
+            ETipoMoto tipo, int numTempi,
+            int potenza, DateTime dataImmatricolazione, int prezzo
+            )
             : base(marca, modello, vin,colore,km,alimentazione,maxSpeed,potenza,dataImmatricolazione,prezzo)
         {
             Tipo = tipo;
