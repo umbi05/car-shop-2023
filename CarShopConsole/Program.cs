@@ -22,13 +22,13 @@ namespace CarShopConsole
                 switch (scelta)
                 {
                     case '1':
-                        ElencoVeicoli();
+                        ElencoVeicoli("\n*** Elenco Generale Veicoli ***");
                         break;
                     case '2':
-                        ElencoSoloAuto();
+                        ElencoVeicoli("\n*** Elenco AUTO ***", typeof(Auto));
                         break;
                     case '3':
-                        ElencoSoloMoto();
+                        ElencoVeicoli("\n*** Elenco MOTO ***", typeof(Moto));
                         break;
                     default:
                         break;
@@ -36,47 +36,17 @@ namespace CarShopConsole
             }
         }
 
-        private static void ElencoSoloMoto()
+        private static void ElencoVeicoli(string titolo, Type tipo = null)
         {
             Console.Clear();
-            Console.WriteLine("\n*** Elenco MOTO ***");
+            Console.WriteLine(titolo);
             int conta = 0;
             foreach (var item in ParcoMezzi)
             {
-                if (item is Moto)
-                {
+                if (tipo == null || tipo == item.GetType()) { 
                     conta++;
-                    Console.WriteLine(conta.ToString() + " - " + item.ToString(true));
+                    Console.WriteLine(conta.ToString() + " - " +  item.ToString());
                 }
-            }
-            Console.WriteLine("\n");
-        }
-
-        private static void ElencoSoloAuto()
-        {
-            Console.Clear();
-            Console.WriteLine("\n*** Elenco AUTO ***");
-            int conta = 0;
-            foreach (var item in ParcoMezzi)
-            {
-                if (item is Auto)
-                {
-                    conta++;
-                    Console.WriteLine(conta.ToString() + " - " + item.ToString(true));
-                }
-            }
-            Console.WriteLine("\n");
-        }
-
-        private static void ElencoVeicoli()
-        {
-            Console.Clear();
-            Console.WriteLine("\n*** Elenco Generale Veicoli ***");
-            int conta = 0;
-            foreach (var item in ParcoMezzi)
-            {
-                conta++;
-                Console.WriteLine(conta.ToString() + " - " +  item.ToString());
             }
             Console.WriteLine("\n");
         }
@@ -85,7 +55,7 @@ namespace CarShopConsole
         {
             Console.WriteLine("1 - Visualizza TUTTI i veicoli");
             Console.WriteLine("2 - Visualizza le AUTO");
-            Console.WriteLine("1 - Visualizza le MOTO");
+            Console.WriteLine("3 - Visualizza le MOTO");
             Console.WriteLine("\nQ - USCITA");
             return Console.ReadKey(true).KeyChar;
         }
