@@ -13,6 +13,8 @@ namespace CarShopLibrary
         public int NumPorte { get; set; }
         public int DimCerchi { get; set; }
 
+        public Auto() { }
+
         public Auto(string marca, string modello, EAlimentazione alimentazione, string colore)
             : base(marca, modello, alimentazione, colore) { }
 
@@ -26,11 +28,11 @@ namespace CarShopLibrary
         }
 
         public Auto(string marca, string modello, EAlimentazione alimentazione, string colore,
-            string vin, int km, int maxSpeed,
-            bool isAWD, int numPorte, int dimCerchi,
-            int potenza, DateTime dataImmatricolazione, int prezzo
+            StructDimensioni dimensioni, string vin, int km, int maxSpeed,
+            int potenza, DateTime dataImmatricolazione, int prezzo, string immagine,
+            bool isAWD, int numPorte, int dimCerchi
             )
-            : base(marca, modello, vin, colore, km, alimentazione, maxSpeed, potenza, dataImmatricolazione, prezzo)
+            : base(marca, modello, alimentazione, colore, dimensioni, vin, km, maxSpeed, potenza, dataImmatricolazione, prezzo, immagine)
         {
             IsAWD = isAWD;
             NumPorte = numPorte;
