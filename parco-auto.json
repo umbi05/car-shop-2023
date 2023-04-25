@@ -1,0 +1,110 @@
+[
+  {
+    "$type": "auto",
+    "IsAWD": false,
+    "NumPorte": 0,
+    "DimCerchi": 0,
+    "Marca": "BMW",
+    "Modello": "Serie 3",
+    "Alimentazione": 1,
+    "Colore": "Blu",
+    "Dimensioni": {
+      "lunghezza": 0,
+      "larghezza": 0,
+      "altezza": 0
+    },
+    "VIN": null,
+    "Km": 0,
+    "MaxSpeed": 0,
+    "Potenza": 0,
+    "DataImmatricolazione": "0001-01-01T00:00:00",
+    "Prezzo": 0,
+    "Immagine": "data:image/jpeg;base64,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"
+  },
+  {
+    "$type": "auto",
+    "IsAWD": true,
+    "NumPorte": 5,
+    "DimCerchi": 18,
+    "Marca": "Mercedes",
+    "Modello": "CLA",
+    "Alimentazione": 2,
+    "Colore": "Grigio",
+    "Dimensioni": {
+      "lunghezza": 0,
+      "larghezza": 0,
+      "altezza": 0
+    },
+    "VIN": null,
+    "Km": 0,
+    "MaxSpeed": 0,
+    "Potenza": 0,
+    "DataImmatricolazione": "0001-01-01T00:00:00",
+    "Prezzo": 0,
+    "Immagine": null
+  },
+  {
+    "$type": "moto",
+    "Tipo": 2,
+    "NumTempi": 4,
+    "Marca": "Yamaha",
+    "Modello": "KZ5",
+    "Alimentazione": 1,
+    "Colore": "Verde",
+    "Dimensioni": {
+      "lunghezza": 270,
+      "larghezza": 87,
+      "altezza": 68
+    },
+    "VIN": "A34DE76PLYT90",
+    "Km": 3500,
+    "MaxSpeed": 210,
+    "Potenza": 130,
+    "DataImmatricolazione": "2021-03-15T00:00:00",
+    "Prezzo": 12750,
+    "Immagine": ""
+  },
+  {
+    "$type": "moto",
+    "Tipo": 3,
+    "NumTempi": 4,
+    "Marca": "Ducati",
+    "Modello": "RossoFuoco",
+    "Alimentazione": 1,
+    "Colore": "Rosso",
+    "Dimensioni": {
+      "lunghezza": 0,
+      "larghezza": 0,
+      "altezza": 0
+    },
+    "VIN": null,
+    "Km": 0,
+    "MaxSpeed": 0,
+    "Potenza": 0,
+    "DataImmatricolazione": "0001-01-01T00:00:00",
+    "Prezzo": 0,
+    "Immagine": null
+  },
+  {
+    "$type": "auto",
+    "IsAWD": false,
+    "NumPorte": 3,
+    "DimCerchi": 16,
+    "Marca": "Fiat",
+    "Modello": "500",
+    "Alimentazione": 3,
+    "Colore": "Bianco",
+    "Dimensioni": {
+      "lunghezza": 320,
+      "larghezza": 160,
+      "altezza": 140
+    },
+    "VIN": "TR5654ER55YJT5",
+    "Km": 37500,
+    "MaxSpeed": 140,
+    "Potenza": 90,
+    "DataImmatricolazione": "2021-10-13T00:00:00",
+    "Prezzo": 17500,
+    "Immagine": ""
+  }
+]
