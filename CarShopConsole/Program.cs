@@ -1,4 +1,7 @@
 ﻿using CarShopLibrary;
+using DocumentFormat.OpenXml.Packaging;
+using Excel = DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,8 +14,11 @@ namespace CarShopConsole
 {
     class Program
     {
-        static List<Veicolo> ParcoMezzi = new List<Veicolo>();
+        const string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quam augue, tempus id metus in, laoreet viverra quam. Sed vulputate risus lacus, et dapibus orci porttitor non.";
 
+        //static IDataTools dataTools = new JsonTools();
+        static IDataTools dataTools = new DbTools(AppDomain.CurrentDomain.BaseDirectory + "ParcoMezzi.mdf");
+        static List<Veicolo> ParcoMezzi = new List<Veicolo>();
         static void Main(string[] args)
         {
             // CreaDatiDiProva();
@@ -48,6 +54,10 @@ namespace CarShopConsole
                     case 'W':
                         EsportaWord();
                         break;
+                    case 'x':
+                    case 'X':
+                        EsportaExcel();
+                        break;
                     default:
                         break;
                 }
@@ -75,7 +85,7 @@ namespace CarShopConsole
                 Console.WriteLine("\nErrore\n");
             }
         }
-
+        
         private static void EsportaWord()
         {
             //int num = 0;
@@ -100,20 +110,47 @@ namespace CarShopConsole
             }
         }
 
-
+        private static void EsportaExcel()
+        {
+            Console.Clear();
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "/test.xlsx";
+            GeneraReportXlsx(filePath);
+            Process.Start(filePath);
+        }
+        public static void GeneraReportXlsx(string filePath)
+        {
+            SpreadsheetDocument reportDocument = OpenXmlExcelTools.CreaDocumento(filePath);
+            using (reportDocument)
+            {
+                Excel.SheetData sheetData = OpenXmlExcelTools.getFirstSheetData(reportDocument);
+                Excel.Row row = OpenXmlExcelTools.CreaRiga();
+                row.Append(OpenXmlExcelTools.CreaCella("VOLANTINO VEICOLI IN VENDITA", true, false));
+                sheetData.Append(row);
+                row = OpenXmlExcelTools.CreaRiga(); sheetData.Append(row);  // riga vuota fra titolo e tabella
+                string[] intestazione = { "VIN", "MARCA", "MODELLO", "DATA", "PREZZO" };
+                row = OpenXmlExcelTools.CreaRiga(intestazione, true, true);
+                sheetData.Append(row);
+                foreach (Veicolo veicolo in ParcoMezzi)
+                {
+                    string[] datiRiga = { veicolo.VIN, veicolo.Marca, veicolo.Modello, veicolo.DataImmatricolazione.ToShortDateString(), veicolo.Prezzo.ToString() };
+                    row = OpenXmlExcelTools.CreaRiga(datiRiga, false, true);
+                    sheetData.Append(row);
+                }
+            }
+        }
         private static void SalvaDati()
         {
-            if (JsonTools.SalvaDati(ParcoMezzi))
+            if (dataTools.SalvaDati(ParcoMezzi))
             {
                 Console.WriteLine("\n*** SCRITTURA DATI OK ***");
                 Thread.Sleep(2000);
                 Console.Clear();
             }
         }
-
+        
         private static void CaricaDati()
         {
-            ParcoMezzi = JsonTools.CaricaDati();
+            ParcoMezzi = dataTools.CaricaDati();
             if (ParcoMezzi != null)
             {
                 Console.WriteLine("\n*** CARICAMENTO DATI OK ***");
@@ -121,7 +158,6 @@ namespace CarShopConsole
                 Console.Clear();
             }
         }
-
         private static void ElencoVeicoli(string titolo, Type tipo = null)
         {
             Console.Clear();
@@ -150,6 +186,7 @@ namespace CarShopConsole
             Console.WriteLine("".PadLeft(30, '_'));
             Console.WriteLine("H - Esporta Volatino HTML");
             Console.WriteLine("W - Esporta Volatino DOCX");
+            Console.WriteLine("X - Esporta Volatino XLSX");
             Console.WriteLine("".PadLeft(30, '_'));
             Console.WriteLine("\nQ - USCITA");
             return Console.ReadKey(true).KeyChar;

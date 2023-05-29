@@ -76,8 +76,11 @@
   <ItemGroup>
     <Compile Include="Auto.cs" />
     <Compile Include="ClsTest.cs" />
+    <Compile Include="DbTools.cs" />
+    <Compile Include="IDataTools.cs" />
     <Compile Include="JsonTools.cs" />
     <Compile Include="Moto.cs" />
+    <Compile Include="OpenXmlExcelTools.cs" />
     <Compile Include="OpenXmlImageHelper.cs" />
     <Compile Include="OpenXmlTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
